@@ -941,9 +941,106 @@
 
     .mobile-call{display:none}
 
+
+    /* Version 3.1 spacing and artwork fixes */
+    .nav{
+      padding-inline:8px;
+    }
+
+    .nav-links{
+      gap:18px;
+      white-space:nowrap;
+    }
+
+    .hero-grid{
+      grid-template-columns:minmax(0,.88fr) minmax(460px,1.12fr);
+      gap:54px;
+    }
+
+    .hero-copy{
+      min-width:0;
+    }
+
+    .hero-benefits{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      max-width:610px;
+      gap:18px 24px;
+    }
+
+    .hero-benefits div{
+      grid-template-columns:42px minmax(0,1fr);
+      min-width:0;
+    }
+
+    .hero-benefits b,
+    .hero-benefits span{
+      line-height:1.25;
+    }
+
+    .hero-visual{
+      transform:none;
+      padding-left:10px;
+    }
+
+    .hero-visual img{
+      width:100%;
+      border-radius:18px;
+      object-fit:cover;
+      object-position:center;
+    }
+
+    .scanner-photo img{
+      object-fit:contain;
+      padding:28px;
+      background:
+        radial-gradient(circle at 60% 45%,rgba(132,223,24,.10),transparent 34%),
+        #070a08;
+    }
+
+    @media(max-width:1180px){
+      .nav-links{
+        gap:13px;
+      }
+
+      .nav-links a{
+        font-size:.80rem;
+      }
+
+      .hero-grid{
+        grid-template-columns:1fr;
+        gap:36px;
+        padding-top:68px;
+      }
+
+      .hero-copy{
+        max-width:850px;
+      }
+
+      .hero-visual{
+        max-width:900px;
+        margin-inline:auto;
+        padding-left:0;
+      }
+
+      .hero-benefits{
+        max-width:720px;
+      }
+    }
+
+    @media(max-width:840px){
+      .nav-links a:not(.nav-call){
+        display:none;
+      }
+
+      .hero-benefits{
+        grid-template-columns:1fr;
+      }
+    }
+
     @media(max-width:1050px){
       .nav-links a:not(.nav-call){display:none}
-      .hero-grid,.difference-grid,.area-grid,.request-grid,.review-grid{grid-template-columns:1fr}
+      .difference-grid,.area-grid,.request-grid,.review-grid{grid-template-columns:1fr}
       .hero-visual{max-width:850px;transform:none}
       .trust-panel{grid-template-columns:1fr 1fr}
       .ase-main{grid-column:span 2}
@@ -1311,8 +1408,8 @@
   <script>
     const aseLogo = document.getElementById("aseLogo");
     const officialASE = new Image();
-    officialASE.onload = () => aseLogo.src = "assets/ase-logo.png";
-    officialASE.src = "assets/ase-logo.png";
+    officialASE.onload = () => aseLogo.src = "assets/ase-logo.webp";
+    officialASE.src = "assets/ase-logo.webp";
 
     const revealItems = document.querySelectorAll(".reveal");
     const observer = new IntersectionObserver(entries => {
