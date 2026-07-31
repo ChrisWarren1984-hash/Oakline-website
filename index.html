@@ -76,7 +76,7 @@
     }
 
     .brand .oak{
-      width:235px;
+      width:285px;
       max-height:68px;
       object-fit:contain;
     }
@@ -247,9 +247,9 @@
 
     .scanner-svg{
       position:absolute;
-      width:52%;
-      right:-1%;
-      bottom:-1%;
+      width:58%;
+      right:-2%;
+      bottom:-4%;
       z-index:4;
       filter:drop-shadow(0 28px 28px rgba(0,0,0,.64));
     }
@@ -344,12 +344,17 @@
     .scanner-stage{
       position:relative;
       min-height:430px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:18px 0 6px;
     }
 
     .scanner-stage .scanner-svg{
-      width:92%;
-      right:0;
-      bottom:0;
+      position:relative;
+      width:min(100%,760px);
+      right:auto;
+      bottom:auto;
     }
 
     .services{
@@ -373,6 +378,9 @@
     }
 
     .card{
+      min-height:310px;
+      display:flex;
+      flex-direction:column;
       overflow:hidden;
       border:1px solid #d9dfd9;
       border-radius:9px;
@@ -385,7 +393,7 @@
     .card:hover{transform:translateY(-5px)}
 
     .card-art{
-      height:157px;
+      height:185px;
       display:grid;
       place-items:center;
       padding:12px;
@@ -393,12 +401,12 @@
     }
 
     .card-art svg{
-      width:132px;
-      height:132px;
+      width:152px;
+      height:152px;
       filter:drop-shadow(0 14px 12px rgba(0,0,0,.22));
     }
 
-    .card-copy{padding:16px 12px 21px}
+    .card-copy{padding:16px 12px 21px;display:flex;flex-direction:column;flex:1;justify-content:flex-start}
     .card h3{font-size:.93rem;text-transform:uppercase;line-height:1.08}
     .card p{margin-top:10px;color:#495149;font-size:.81rem}
 
@@ -421,7 +429,7 @@
     .bottom ul{display:grid;gap:10px;margin-top:18px;list-style:none}
     .bottom li::before{content:"✓";color:var(--green);margin-right:8px}
     .price{margin:10px 0;color:var(--green);font-size:4rem;font-weight:900}
-    .map iframe{width:100%;height:220px;margin-top:18px;border:0;border-radius:8px}
+    .map iframe{width:100%;height:270px;margin-top:18px;border:0;border-radius:8px}
     .stars{margin:14px 0;color:#ffc52b;letter-spacing:.13em}
 
     .request{
@@ -473,6 +481,118 @@
       border-top:1px solid var(--line);
       color:#aaa;
       text-align:center;
+    }
+
+
+    .request-copy{
+      padding:24px 0;
+    }
+
+    .request-trust{
+      display:grid;
+      gap:13px;
+      margin-top:28px;
+    }
+
+    .request-trust div{
+      padding:15px 17px;
+      border-left:4px solid var(--green);
+      border-radius:7px;
+      background:#fff;
+      box-shadow:0 8px 22px rgba(18,50,29,.08);
+    }
+
+    .request-trust strong{
+      display:block;
+      color:var(--ink);
+      text-transform:uppercase;
+      font-size:.86rem;
+    }
+
+    .request-trust span{
+      display:block;
+      margin-top:3px;
+      color:#687168;
+      font-size:.82rem;
+    }
+
+    .direct-call{
+      display:inline-block;
+      margin-top:22px;
+      color:var(--green-dark);
+      text-decoration:none;
+      font-weight:800;
+    }
+
+    footer{
+      text-align:left;
+    }
+
+    .footer-inner{
+      display:grid;
+      grid-template-columns:1.25fr repeat(3,1fr);
+      gap:34px;
+      align-items:start;
+    }
+
+    .footer-brand img{
+      width:250px;
+      max-height:74px;
+      object-fit:contain;
+    }
+
+    .footer-brand p{
+      max-width:300px;
+      margin-top:13px;
+      color:#b5bcb6;
+    }
+
+    .footer-column h4{
+      margin-bottom:12px;
+      color:#fff;
+      text-transform:uppercase;
+      font-size:.82rem;
+    }
+
+    .footer-column ul{
+      display:grid;
+      gap:7px;
+      list-style:none;
+      color:#b5bcb6;
+      font-size:.82rem;
+    }
+
+    .footer-column a{
+      text-decoration:none;
+    }
+
+    .footer-column a:hover{
+      color:var(--green);
+    }
+
+    .footer-bottom{
+      margin-top:30px;
+      padding-top:18px;
+      border-top:1px solid var(--line);
+      text-align:center;
+      color:#8f9791;
+      font-size:.75rem;
+    }
+
+    @media(max-width:900px){
+      .footer-inner{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media(max-width:620px){
+      .footer-inner{
+        grid-template-columns:1fr;
+      }
+
+      .request-copy{
+        padding-top:0;
+      }
     }
 
     .mobile-call{display:none}
@@ -806,9 +926,18 @@
 
   <section class="request" id="contact">
     <div class="container request-grid">
-      <div>
+      <div class="request-copy">
         <h2>Ready to Find the <span>Real Problem?</span></h2>
         <p>Tell us about the vehicle and symptoms. Oakline will contact you to confirm service and pricing.</p>
+
+        <div class="request-trust">
+          <div><strong>✓ Mobile Service</strong><span>We come to your home or workplace.</span></div>
+          <div><strong>✓ ASE Master Certified</strong><span>Professional diagnostic experience.</span></div>
+          <div><strong>✓ Text Response</strong><span>Your request opens directly in your messaging app.</span></div>
+          <div><strong>✓ Honest Recommendations</strong><span>No work is performed without your approval.</span></div>
+        </div>
+
+        <a class="direct-call" href="tel:9104897254">Prefer to call? <b>(910) 489-7254</b></a>
       </div>
 
       <form id="serviceForm">
@@ -840,7 +969,50 @@
   </section>
 </main>
 
-<footer>© 2026 Oakline Automotive Diagnostics • Fayetteville, North Carolina • (910) 489-7254</footer>
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="assets/oakline-logo.svg" alt="Oakline Automotive Diagnostics">
+      <p>ASE Master Certified mobile diagnostics serving Fayetteville and surrounding communities.</p>
+    </div>
+
+    <div class="footer-column">
+      <h4>Services</h4>
+      <ul>
+        <li>Check Engine Diagnostics</li>
+        <li>Electrical Diagnostics</li>
+        <li>No Start Diagnostics</li>
+        <li>Transmission Diagnostics</li>
+        <li>Module Diagnostics</li>
+        <li>Battery & Charging Testing</li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Service Area</h4>
+      <ul>
+        <li>Fayetteville</li>
+        <li>Hope Mills</li>
+        <li>Raeford</li>
+        <li>Spring Lake</li>
+        <li>Stedman & Eastover</li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:9104897254">(910) 489-7254</a></li>
+        <li><a href="sms:9104897254">Text Oakline</a></li>
+        <li>Mobile Service</li>
+        <li>Evenings & Weekends</li>
+        <li><a href="#contact">Request Service</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">© 2026 Oakline Automotive Diagnostics. All rights reserved.</div>
+</footer>
 <a class="mobile-call" href="tel:9104897254">Call Oakline • (910) 489-7254</a>
 
 <script>
