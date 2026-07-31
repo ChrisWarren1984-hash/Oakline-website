@@ -3,1228 +3,312 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Oakline Automotive Diagnostics | Mobile Diagnostics Fayetteville NC</title>
-  <meta name="description" content="ASE Master Certified mobile automotive diagnostics and repair serving Fayetteville, Hope Mills, Raeford, Spring Lake, Stedman and surrounding North Carolina communities.">
-  <meta name="theme-color" content="#06100b">
-
+  <meta name="description" content="ASE Master Certified mobile automotive diagnostics serving Fayetteville, Hope Mills, Raeford, Spring Lake, Stedman and nearby communities.">
+  <meta name="theme-color" content="#050705">
   <style>
     :root{
-      --green:#57e389;
-      --green-2:#20b85a;
-      --green-glow:rgba(87,227,137,.32);
-      --blue:#3e8ee8;
-      --black:#020503;
-      --dark:#07100b;
-      --panel:#0d1711;
-      --panel-2:#132219;
-      --white:#f5f9f6;
-      --muted:#9eada4;
-      --line:rgba(255,255,255,.09);
-      --shadow:0 26px 80px rgba(0,0,0,.52);
+      --green:#84de19;
+      --green2:#56a90d;
+      --black:#050705;
+      --black2:#0a0e0b;
+      --panel:#101510;
+      --panel2:#171d18;
+      --white:#fff;
+      --muted:#aeb6b0;
+      --line:rgba(255,255,255,.11);
+      --paper:#f5f6f5;
+      --ink:#171d18;
+      --shadow:0 24px 70px rgba(0,0,0,.38);
     }
-
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{
-      color:var(--white);
-      background:
-        radial-gradient(circle at 80% 10%,rgba(87,227,137,.11),transparent 24%),
-        radial-gradient(circle at 15% 60%,rgba(62,142,232,.06),transparent 22%),
-        var(--black);
-      font-family:Arial,Helvetica,sans-serif;
-      line-height:1.6;
-      overflow-x:hidden;
-    }
-
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      opacity:.14;
-      background-image:
-        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
-      background-size:34px 34px;
-      mask-image:linear-gradient(to bottom,black,transparent 85%);
-    }
-
+    body{font-family:Arial,Helvetica,sans-serif;background:var(--black);color:white;line-height:1.55;overflow-x:hidden}
     a{color:inherit}
     img{display:block;max-width:100%}
-    .container{width:min(1180px,calc(100% - 38px));margin:auto}
-    .eyebrow{
-      color:var(--green);
-      font-size:.75rem;
-      font-weight:900;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-    }
-
-    .topbar{
-      padding:9px 16px;
-      text-align:center;
-      color:#021006;
-      background:linear-gradient(90deg,var(--green-2),var(--green));
-      font-size:.75rem;
-      font-weight:900;
-      letter-spacing:.13em;
-      text-transform:uppercase;
-    }
-
-    header{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      background:rgba(2,5,3,.84);
-      backdrop-filter:blur(18px);
-      border-bottom:1px solid var(--line);
-    }
-
-    nav{
-      min-height:82px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:24px;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
-      text-decoration:none;
-    }
-
-    .brand-logo{
-      width:68px;
-      height:68px;
-      object-fit:contain;
-      filter:drop-shadow(0 0 16px rgba(87,227,137,.18));
-    }
-
-    .brand-text strong{
-      display:block;
-      font-size:1.04rem;
-      letter-spacing:.02em;
-    }
-
-    .brand-text span{
-      display:block;
-      margin-top:2px;
-      color:var(--muted);
-      font-size:.72rem;
-    }
-
-    .nav-links{
-      display:flex;
-      align-items:center;
-      gap:22px;
-    }
-
-    .nav-links a{
-      text-decoration:none;
-      color:#d8e1db;
-      font-size:.9rem;
-      font-weight:800;
-    }
-
+    .container{width:min(1220px,calc(100% - 36px));margin:auto}
+    .eyebrow{color:var(--green);font-size:.74rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
+    .topbar{padding:8px 16px;text-align:center;background:#0b100c;color:var(--green);border-bottom:1px solid var(--line);font-size:.7rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+    header{position:sticky;top:0;z-index:1000;background:rgba(5,7,5,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+    .nav{min-height:86px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand img{width:230px;max-height:68px;object-fit:contain}
+    .nav-links{display:flex;align-items:center;gap:22px}
+    .nav-links a{text-decoration:none;font-size:.87rem;font-weight:800}
     .nav-links a:hover{color:var(--green)}
-
-    .nav-call{
-      padding:11px 17px;
-      border-radius:9px;
-      color:#021006!important;
-      background:linear-gradient(135deg,var(--green),var(--green-2));
-      box-shadow:0 12px 28px rgba(32,184,90,.22);
-    }
-
-    .hero{
-      min-height:780px;
-      position:relative;
-      display:grid;
-      align-items:center;
-      overflow:hidden;
-      border-bottom:1px solid var(--line);
-      background:
-        radial-gradient(circle at 77% 43%,rgba(87,227,137,.15),transparent 20%),
-        linear-gradient(90deg,rgba(2,5,3,.99) 0%,rgba(2,5,3,.95) 42%,rgba(2,5,3,.68) 68%,rgba(2,5,3,.35) 100%),
-        linear-gradient(135deg,#07100b 0%,#0a1710 50%,#0e2718 100%);
-    }
-
-    .hero::after{
-      content:"";
-      position:absolute;
-      width:650px;
-      height:650px;
-      right:-170px;
-      bottom:-280px;
-      border:1px solid rgba(87,227,137,.22);
-      border-radius:50%;
-      box-shadow:
-        0 0 0 90px rgba(87,227,137,.024),
-        0 0 0 185px rgba(87,227,137,.016);
-    }
-
-    .hero-layout{
-      display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:55px;
-      align-items:center;
-      position:relative;
-      z-index:2;
-      padding:100px 0;
-    }
-
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:9px;
-      padding:9px 13px;
-      margin-bottom:25px;
-      border:1px solid rgba(87,227,137,.26);
-      border-radius:999px;
-      color:var(--green);
-      background:rgba(87,227,137,.08);
-      font-size:.76rem;
-      font-weight:900;
-      letter-spacing:.1em;
-      text-transform:uppercase;
-    }
-
-    .badge::before{
-      content:"";
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background:var(--green);
-      box-shadow:0 0 14px var(--green);
-    }
-
-    h1,h2,h3{line-height:1.08}
-    h1{
-      max-width:780px;
-      font-size:clamp(3.5rem,6.6vw,6.5rem);
-      letter-spacing:-.055em;
-    }
-    h1 span{color:var(--green)}
-
-    h2{
-      margin-top:10px;
-      font-size:clamp(2.1rem,4vw,3.5rem);
-      letter-spacing:-.035em;
-    }
-
-    .hero-copy{
-      max-width:680px;
-      margin-top:24px;
-      color:#cbd6cf;
-      font-size:clamp(1.02rem,1.7vw,1.22rem);
-    }
-
-    .actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:13px;
-      margin-top:34px;
-    }
-
-    .button{
-      min-height:54px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:0 24px;
-      border:1px solid transparent;
-      border-radius:9px;
-      text-decoration:none;
-      font-weight:900;
-      cursor:pointer;
-      transition:.2s ease;
-    }
-
-    .button:hover{transform:translateY(-2px)}
-    .primary{
-      color:#021006;
-      background:linear-gradient(135deg,var(--green),var(--green-2));
-      box-shadow:0 16px 34px rgba(32,184,90,.24);
-    }
-    .secondary{
-      color:white;
-      background:rgba(255,255,255,.05);
-      border-color:var(--line);
-    }
-
-    .trust{
-      display:flex;
-      flex-wrap:wrap;
-      gap:23px;
-      margin-top:40px;
-      color:#dce5df;
-      font-size:.87rem;
-      font-weight:800;
-    }
-    .trust span::before{
-      content:"✓";
-      margin-right:8px;
-      color:var(--green);
-    }
-
-    .diagnostic-console{
-      position:relative;
-      min-height:490px;
-      padding:24px;
-      border:1px solid rgba(87,227,137,.24);
-      border-radius:22px;
-      background:
-        linear-gradient(145deg,rgba(18,34,24,.96),rgba(7,15,10,.96));
-      box-shadow:var(--shadow);
-      overflow:hidden;
-    }
-
-    .diagnostic-console::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      background:
-        linear-gradient(rgba(87,227,137,.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(87,227,137,.05) 1px, transparent 1px);
-      background-size:28px 28px;
-      mask-image:linear-gradient(to bottom,black,transparent 95%);
-    }
-
-    .console-top{
-      position:relative;
-      z-index:2;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:20px;
-      padding-bottom:18px;
-      border-bottom:1px solid var(--line);
-    }
-
-    .console-status{
-      display:flex;
-      align-items:center;
-      gap:9px;
-      color:var(--green);
-      font-size:.76rem;
-      font-weight:900;
-      letter-spacing:.1em;
-      text-transform:uppercase;
-    }
-
-    .console-status::before{
-      content:"";
-      width:9px;
-      height:9px;
-      border-radius:50%;
-      background:var(--green);
-      box-shadow:0 0 14px var(--green);
-    }
-
-    .console-id{color:var(--muted);font-size:.75rem}
-
-    .scanner{
-      position:relative;
-      z-index:2;
-      width:210px;
-      height:305px;
-      margin:34px auto 18px;
-      padding:16px;
-      border:1px solid rgba(255,255,255,.14);
-      border-radius:22px;
-      background:linear-gradient(145deg,#202a23,#0c120e);
-      box-shadow:
-        inset 0 0 0 6px #050806,
-        0 30px 60px rgba(0,0,0,.45);
-      transform:rotate(-4deg);
-    }
-
-    .scanner-screen{
-      height:180px;
-      padding:18px;
-      border-radius:12px;
-      background:
-        radial-gradient(circle at 60% 38%,rgba(87,227,137,.15),transparent 35%),
-        #031007;
-      border:1px solid rgba(87,227,137,.24);
-      box-shadow:inset 0 0 30px rgba(87,227,137,.08);
-    }
-
-    .screen-label{
-      color:var(--green);
-      font-size:.67rem;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      font-weight:900;
-    }
-
-    .wave{
-      height:90px;
-      margin-top:20px;
-      background:
-        linear-gradient(transparent 49%,rgba(87,227,137,.16) 50%,transparent 51%),
-        linear-gradient(90deg,transparent 49%,rgba(87,227,137,.10) 50%,transparent 51%);
-      background-size:100% 22px,30px 100%;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .wave::after{
-      content:"";
-      position:absolute;
-      inset:20px -20px auto -20px;
-      height:3px;
-      background:linear-gradient(90deg,
-        transparent 0%,
-        transparent 6%,
-        var(--green) 7%,
-        var(--green) 13%,
-        transparent 14%,
-        transparent 24%,
-        var(--green) 25%,
-        var(--green) 34%,
-        transparent 35%,
-        transparent 48%,
-        var(--green) 49%,
-        var(--green) 59%,
-        transparent 60%,
-        transparent 74%,
-        var(--green) 75%,
-        var(--green) 88%,
-        transparent 89%);
-      filter:drop-shadow(0 0 7px var(--green));
-      transform:skewY(-12deg);
-    }
-
-    .scanner-buttons{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:10px;
-      margin-top:18px;
-    }
-
-    .scanner-buttons span{
-      height:24px;
-      border-radius:6px;
-      background:#19221c;
-      border:1px solid rgba(255,255,255,.08);
-    }
-
-    .floating-card{
-      position:absolute;
-      z-index:3;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      padding:12px 14px;
-      border:1px solid var(--line);
-      border-radius:11px;
-      background:rgba(9,18,12,.92);
-      box-shadow:0 14px 35px rgba(0,0,0,.35);
-      font-size:.82rem;
-      font-weight:800;
-    }
-
-    .floating-card::before{
-      content:"✓";
-      width:25px;
-      height:25px;
-      display:grid;
-      place-items:center;
-      border-radius:50%;
-      color:#021006;
-      background:var(--green);
-      font-weight:900;
-    }
-
-    .fc1{top:110px;left:18px}
-    .fc2{right:18px;top:200px}
-    .fc3{left:30px;bottom:36px}
-
-    .stats{
-      position:relative;
-      z-index:5;
-      margin-top:-47px;
-    }
-
-    .stats-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      overflow:hidden;
-      border:1px solid var(--line);
-      border-radius:16px;
-      background:linear-gradient(145deg,var(--panel-2),var(--panel));
-      box-shadow:var(--shadow);
-    }
-
-    .stat{
-      padding:28px 22px;
-      text-align:center;
-      border-right:1px solid var(--line);
-    }
-    .stat:last-child{border-right:none}
-    .stat strong{
-      display:block;
-      color:var(--green);
-      font-size:1.12rem;
-      margin-bottom:4px;
-    }
-    .stat span{color:var(--muted);font-size:.84rem}
-
-    section{padding:100px 0}
-
-    .section-heading{
-      display:flex;
-      align-items:end;
-      justify-content:space-between;
-      gap:30px;
-      margin-bottom:44px;
-    }
-
-    .intro{
-      max-width:700px;
-      margin-top:15px;
-      color:var(--muted);
-      font-size:1.02rem;
-    }
-
-    .services-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-    }
-
-    .service-card{
-      position:relative;
-      overflow:hidden;
-      min-height:280px;
-      padding:30px;
-      border:1px solid var(--line);
-      border-radius:16px;
-      background:linear-gradient(145deg,var(--panel-2),var(--panel));
-      transition:.25s ease;
-    }
-
-    .service-card::after{
-      content:"";
-      position:absolute;
-      width:120px;
-      height:120px;
-      right:-35px;
-      bottom:-40px;
-      border:1px solid rgba(87,227,137,.15);
-      border-radius:50%;
-      box-shadow:0 0 0 25px rgba(87,227,137,.025);
-    }
-
-    .service-card:hover{
-      transform:translateY(-6px);
-      border-color:rgba(87,227,137,.34);
-      box-shadow:0 20px 45px rgba(0,0,0,.3);
-    }
-
-    .service-icon{
-      width:56px;
-      height:56px;
-      display:grid;
-      place-items:center;
-      margin-bottom:24px;
-      border:1px solid rgba(87,227,137,.24);
-      border-radius:13px;
-      color:var(--green);
-      background:rgba(87,227,137,.09);
-      font-size:1.38rem;
-    }
-
-    .service-card h3{font-size:1.28rem;margin-bottom:12px}
-    .service-card p{color:var(--muted);font-size:.94rem}
-
-    .process-section{
-      border-block:1px solid var(--line);
-      background:
-        radial-gradient(circle at 80% 40%,rgba(87,227,137,.09),transparent 24%),
-        var(--dark);
-    }
-
-    .split{
-      display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:65px;
-      align-items:center;
-    }
-
-    .process-list{
-      display:grid;
-      gap:18px;
-      margin-top:30px;
-    }
-
-    .process-item{
-      display:grid;
-      grid-template-columns:50px 1fr;
-      gap:17px;
-    }
-
-    .process-number{
-      width:50px;
-      height:50px;
-      display:grid;
-      place-items:center;
-      border-radius:50%;
-      color:#021006;
-      background:var(--green);
-      font-weight:900;
-      box-shadow:0 0 25px rgba(87,227,137,.18);
-    }
-
-    .process-item p{
-      margin-top:5px;
-      color:var(--muted);
-      font-size:.92rem;
-    }
-
-    .data-panel{
-      padding:34px;
-      border:1px solid rgba(87,227,137,.26);
-      border-radius:18px;
-      background:linear-gradient(145deg,#0f1b13,#07100b);
-      box-shadow:var(--shadow);
-    }
-
-    .data-row{
-      display:grid;
-      grid-template-columns:1fr auto;
-      gap:20px;
-      padding:14px 0;
-      border-bottom:1px solid var(--line);
-      color:#d8e1dc;
-      font-size:.9rem;
-    }
-    .data-row:last-child{border-bottom:none}
-    .data-value{color:var(--green);font-weight:900}
-    .scanline{
-      height:4px;
-      margin:24px 0;
-      border-radius:4px;
-      background:linear-gradient(90deg,transparent,var(--green),transparent);
-      box-shadow:0 0 20px rgba(87,227,137,.7);
-    }
-
-    .about-grid{
-      display:grid;
-      grid-template-columns:.88fr 1.12fr;
-      gap:55px;
-      align-items:center;
-    }
-
-    .logo-showcase{
-      min-height:430px;
-      display:grid;
-      place-items:center;
-      padding:60px;
-      border:1px solid var(--line);
-      border-radius:20px;
-      background:
-        radial-gradient(circle,rgba(87,227,137,.17),transparent 37%),
-        linear-gradient(145deg,#101d15,#060b08);
-      box-shadow:var(--shadow);
-    }
-
-    .logo-showcase img{
-      width:min(330px,80%);
-      filter:drop-shadow(0 18px 40px rgba(0,0,0,.45));
-    }
-
-    .about-copy p{margin-top:17px;color:var(--muted)}
-
-    .credential-row{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
-      margin-top:24px;
-    }
-
-    .credential-card{
-      min-height:150px;
-      display:flex;
-      align-items:center;
-      gap:16px;
-      padding:20px;
-      border:1px solid var(--line);
-      border-radius:15px;
-      background:linear-gradient(145deg,var(--panel-2),var(--panel));
-    }
-
-    .ase-card{
-      border-color:rgba(62,142,232,.34);
-      background:linear-gradient(145deg,#13233a,#09111d);
-    }
-
-    .shield{
-      width:72px;
-      height:72px;
-      flex:0 0 72px;
-      display:grid;
-      place-items:center;
-      border:3px solid white;
-      border-radius:19px 19px 27px 27px;
-      color:white;
-      background:linear-gradient(145deg,#2f7fd6,#123f76);
-      font-size:1.1rem;
-      font-weight:900;
-      letter-spacing:.08em;
-      box-shadow:0 0 24px rgba(47,127,214,.3);
-    }
-
-    .gear{
-      width:72px;
-      height:72px;
-      flex:0 0 72px;
-      display:grid;
-      place-items:center;
-      border-radius:50%;
-      color:#021006;
-      background:var(--green);
-      font-size:1.7rem;
-      box-shadow:0 0 24px rgba(87,227,137,.25);
-    }
-
-    .credential-card strong{display:block;margin-bottom:4px}
-    .credential-card span{display:block;color:#b6c5bc;font-size:.84rem}
-
-    .why-section{
-      border-block:1px solid var(--line);
-      background:
-        linear-gradient(135deg,rgba(87,227,137,.04),transparent 35%),
-        var(--charcoal,#0a100c);
-    }
-
-    .why-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:16px;
-      margin-top:36px;
-    }
-
-    .why-card{
-      padding:24px;
-      border:1px solid var(--line);
-      border-radius:14px;
-      background:var(--panel);
-    }
-
-    .why-card strong{
-      display:block;
-      margin-bottom:8px;
-      color:var(--green);
-      font-size:1.02rem;
-    }
-
-    .why-card p{color:var(--muted);font-size:.9rem}
-
-    .reviews{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-      margin-top:36px;
-    }
-
-    .review-card{
-      padding:28px;
-      border:1px solid var(--line);
-      border-radius:16px;
-      background:linear-gradient(145deg,var(--panel-2),var(--panel));
-    }
-
-    .stars{
-      margin-bottom:14px;
-      color:var(--green);
-      letter-spacing:.15em;
-    }
-
-    .review-card p{color:var(--muted)}
-    .review-card small{
-      display:block;
-      margin-top:16px;
-      color:#dfe7e2;
-      font-weight:800;
-    }
-
-    .area-section{
-      border-block:1px solid var(--line);
-      background:var(--dark);
-    }
-
-    .areas{
-      display:grid;
-      grid-template-columns:repeat(5,1fr);
-      gap:12px;
-      margin-top:34px;
-    }
-
-    .area{
-      padding:18px 10px;
-      border:1px solid var(--line);
-      border-radius:11px;
-      background:var(--panel);
-      text-align:center;
-      font-weight:900;
-    }
-
-    .contact-grid{
-      display:grid;
-      grid-template-columns:.9fr 1.1fr;
-      gap:50px;
-    }
-
-    .contact-list{
-      display:grid;
-      gap:14px;
-      margin-top:28px;
-    }
-
-    .contact-item{
-      padding:18px;
-      border:1px solid var(--line);
-      border-radius:11px;
-      background:var(--panel);
-    }
-
-    .contact-item small{display:block;margin-bottom:3px;color:var(--muted)}
-
-    form{
-      padding:31px;
-      border:1px solid var(--line);
-      border-radius:17px;
-      background:linear-gradient(145deg,var(--panel-2),var(--panel));
-    }
-
-    .form-row{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
-    }
-
-    label{
-      display:block;
-      margin-bottom:6px;
-      font-size:.82rem;
-      font-weight:900;
-    }
-
-    input,select,textarea{
-      width:100%;
-      padding:13px;
-      margin-bottom:14px;
-      border:1px solid var(--line);
-      border-radius:8px;
-      outline:none;
-      color:white;
-      background:#060b08;
-      font:inherit;
-    }
-
-    input:focus,select:focus,textarea:focus{border-color:var(--green)}
-    textarea{min-height:135px;resize:vertical}
-    form .button{width:100%}
-
-    .cta{padding-top:15px}
-    .cta-box{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:30px;
-      padding:46px;
-      border:1px solid rgba(87,227,137,.3);
-      border-radius:19px;
-      background:
-        radial-gradient(circle at right,rgba(255,255,255,.14),transparent 25%),
-        linear-gradient(135deg,#1a7b40,#0a4021);
-    }
-
-    .cta-box p{color:#d8f0e0}
-    .cta-box .button{flex-shrink:0;color:#092014;background:white}
-
-    footer{
-      margin-top:90px;
-      padding:40px 0;
-      border-top:1px solid var(--line);
-      color:var(--muted);
-      background:#020403;
-      font-size:.86rem;
-    }
-
-    .footer-inner{
-      display:flex;
-      justify-content:space-between;
-      gap:20px;
-    }
-
+    .nav-call{padding:11px 16px;border:1px solid var(--green);border-radius:8px;background:#111810}
+    .hero{position:relative;overflow:hidden;background:linear-gradient(110deg,#050705 0%,#070a08 56%,#0c120d 100%);border-bottom:1px solid var(--line)}
+    .hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 42%,rgba(132,222,25,.13),transparent 26%)}
+    .hero-grid{position:relative;z-index:2;min-height:650px;display:grid;grid-template-columns:.82fr 1.18fr;align-items:center;gap:44px;padding:82px 0 88px}
+    h1,h2,h3{line-height:1.05}
+    h1{margin-top:14px;font-size:clamp(3.45rem,6.4vw,6.4rem);letter-spacing:-.055em;text-transform:uppercase}
+    h1 span{display:block;color:var(--green)}
+    .hero-copy>p{max-width:650px;margin-top:22px;color:#d9dfda;font-size:1.12rem}
+    .hero-icons{display:flex;flex-wrap:wrap;gap:25px;margin-top:27px}
+    .hero-icons div{display:grid;grid-template-columns:40px 1fr;gap:9px;align-items:center}
+    .hero-icons i{width:40px;height:40px;display:grid;place-items:center;border:1px solid rgba(132,222,25,.4);border-radius:50%;color:var(--green);font-style:normal}
+    .hero-icons b{display:block;font-size:.79rem;text-transform:uppercase}
+    .hero-icons span{display:block;color:var(--muted);font-size:.73rem}
+    .actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
+    .btn{min-height:53px;display:inline-flex;align-items:center;justify-content:center;padding:0 24px;border:1px solid transparent;border-radius:8px;text-decoration:none;font-weight:900;cursor:pointer;transition:.2s}
+    .btn:hover{transform:translateY(-2px)}
+    .primary{color:#061006;background:linear-gradient(135deg,var(--green),var(--green2));box-shadow:0 15px 35px rgba(132,222,25,.2)}
+    .secondary{border-color:var(--green);background:#0b100c}
+    .hero-visual{position:relative}
+    .hero-visual img{width:100%;filter:drop-shadow(0 34px 45px rgba(0,0,0,.42))}
+    .scanner-label{position:absolute;right:8%;bottom:5%;padding:8px 12px;border:1px solid rgba(132,222,25,.4);border-radius:7px;background:rgba(5,8,6,.9);color:var(--green);font-size:.72rem;font-weight:900;text-transform:uppercase}
+    .credential-strip{position:relative;z-index:5;margin-top:-26px}
+    .credential-panel{display:grid;grid-template-columns:1.35fr repeat(4,1fr);border:1px solid var(--line);border-radius:14px;overflow:hidden;background:linear-gradient(145deg,#111612,#080c09);box-shadow:var(--shadow)}
+    .ase-main{display:flex;align-items:center;gap:20px;padding:27px;border-right:1px solid var(--line)}
+    .ase-main img{width:92px;height:92px;object-fit:contain}
+    .ase-main h2{font-size:1.55rem;text-transform:uppercase}
+    .ase-main h2 span{color:var(--green)}
+    .ase-main p{margin-top:5px;color:var(--muted);font-size:.84rem}
+    .credential-item{padding:25px 18px;text-align:center;border-right:1px solid var(--line)}
+    .credential-item:last-child{border-right:none}
+    .credential-item i{width:47px;height:47px;display:grid;place-items:center;margin:0 auto 11px;border:1px solid rgba(132,222,25,.36);border-radius:50%;color:var(--green);font-style:normal}
+    .credential-item b{display:block;font-size:.84rem;text-transform:uppercase}
+    .credential-item span{display:block;color:var(--muted);font-size:.74rem}
+    .services{padding:82px 0 92px;background:var(--paper);color:var(--ink)}
+    .section-title{text-align:center;margin-bottom:34px}
+    .section-title h2{margin-top:7px;font-size:clamp(2rem,4vw,3.3rem);letter-spacing:-.035em;text-transform:uppercase}
+    .section-title h2 span{color:var(--green2)}
+    .services-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:13px}
+    .service-card{overflow:hidden;border:1px solid #dfe4df;border-radius:9px;background:white;box-shadow:0 12px 30px rgba(25,58,38,.08);transition:.25s}
+    .service-card:hover{transform:translateY(-5px);box-shadow:0 20px 40px rgba(25,58,38,.13)}
+    .service-art{height:164px;overflow:hidden;background:#080b08}
+    .service-art img{width:100%;height:100%;object-fit:cover}
+    .service-copy{padding:17px;text-align:center}
+    .service-copy h3{min-height:49px;font-size:.93rem;text-transform:uppercase}
+    .service-copy p{margin-top:9px;color:#667069;font-size:.8rem}
+    .lower-grid{display:grid;grid-template-columns:1fr 1.25fr 1.15fr;gap:16px;margin-top:18px}
+    .dark-card{min-height:315px;padding:23px;border:1px solid var(--line);border-radius:10px;background:linear-gradient(145deg,#111612,#080c09);color:white;box-shadow:0 14px 36px rgba(0,0,0,.17)}
+    .dark-card h3{color:var(--green);font-size:1rem;text-transform:uppercase;margin-bottom:15px}
+    .difference{position:relative;overflow:hidden}
+    .difference ul{position:relative;z-index:2;display:grid;gap:10px;list-style:none;max-width:64%}
+    .difference li{font-size:.86rem}
+    .difference li:before{content:"✓";color:var(--green);font-weight:900;margin-right:8px}
+    .difference img{position:absolute;right:-4px;bottom:-5px;width:54%;filter:drop-shadow(0 14px 24px rgba(0,0,0,.5))}
+    .price-layout{display:grid;grid-template-columns:1.12fr 1fr;gap:11px}
+    .price-main,.quote-item{padding:16px;border:1px solid var(--line);border-radius:8px;background:#101510}
+    .price-main small{font-weight:900;text-transform:uppercase}
+    .price{margin:8px 0;color:var(--green);font-size:3rem;font-weight:900;line-height:1}
+    .price-main ul{display:grid;gap:7px;list-style:none;color:#d9dfda;font-size:.8rem}
+    .price-main li:before{content:"✓";color:var(--green);margin-right:7px}
+    .quote-list{display:grid;gap:9px}
+    .quote-item b{display:block;font-size:.78rem;text-transform:uppercase}
+    .quote-item span{display:block;margin-top:3px;color:var(--green);font-size:.75rem;font-weight:900}
+    .pricing-note{margin-top:12px;color:var(--muted);font-size:.76rem}
+    .map-card{padding:0;overflow:hidden}
+    .map-head{padding:17px 19px}
+    .map-head p{margin-top:5px;color:var(--muted);font-size:.82rem}
+    .map-frame{height:240px}
+    .map-frame iframe{width:100%;height:100%;border:0}
+    .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;margin-top:17px;overflow:hidden;border:1px solid var(--line);border-radius:9px;background:var(--line)}
+    .stat{padding:18px;background:#0b100c;text-align:center}
+    .stat b{display:block;font-size:1.08rem;text-transform:uppercase}
+    .stat span{display:block;color:var(--muted);font-size:.74rem}
+    .review{grid-column:span 2;text-align:left}
+    .review strong{display:block;font-size:.84rem;font-weight:500}
+    .stars{color:#f4b72a;letter-spacing:.12em;margin-top:5px}
+    .cta-request{padding:70px 0;background:linear-gradient(100deg,#070a08,#0e150f)}
+    .cta-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:36px;align-items:center}
+    .cta-grid h2{font-size:clamp(2rem,4vw,3.3rem);text-transform:uppercase}
+    .cta-grid p{margin-top:12px;color:var(--muted)}
+    .cta-features{display:flex;flex-wrap:wrap;gap:19px;margin-top:22px;color:#dce2dd;font-size:.78rem;font-weight:800}
+    .cta-features span:before{content:"✓";color:var(--green);margin-right:6px}
+    form{padding:24px;border:1px solid var(--line);border-radius:10px;background:#0d120e}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    label{display:block;color:#e3e8e4;font-size:.78rem;font-weight:900}
+    input,select,textarea{width:100%;margin:6px 0 12px;padding:12px;border:1px solid rgba(255,255,255,.15);border-radius:5px;background:#090d0a;color:white;font:inherit}
+    textarea{min-height:100px;resize:vertical}
+    form .btn{width:100%}
+    footer{padding:42px 0 28px;background:#050705;border-top:1px solid var(--line);color:var(--muted)}
+    .footer-grid{display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:35px}
+    .footer-brand img{width:230px}
+    .footer-brand p{max-width:270px;margin-top:12px}
+    footer h4{color:white;margin-bottom:10px;text-transform:uppercase;font-size:.84rem}
+    footer ul{list-style:none;display:grid;gap:5px;font-size:.78rem}
+    .copyright{text-align:center;margin-top:28px;padding-top:18px;border-top:1px solid var(--line);font-size:.75rem}
     .mobile-call{display:none}
-
-    @media(max-width:980px){
+    @media(max-width:1050px){
       .nav-links a:not(.nav-call){display:none}
-      .hero-layout,.split,.about-grid,.contact-grid{grid-template-columns:1fr}
-      .diagnostic-console{max-width:680px}
-      .services-grid{grid-template-columns:1fr 1fr}
-      .why-grid{grid-template-columns:1fr 1fr}
-      .reviews{grid-template-columns:1fr}
-      .areas{grid-template-columns:repeat(3,1fr)}
-      .stats-grid{grid-template-columns:1fr 1fr}
-      .stat:nth-child(2){border-right:none}
-      .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+      .hero-grid,.cta-grid{grid-template-columns:1fr}
+      .hero-visual{max-width:760px}
+      .credential-panel{grid-template-columns:1fr 1fr}
+      .ase-main{grid-column:span 2}
+      .services-grid{grid-template-columns:repeat(3,1fr)}
+      .lower-grid{grid-template-columns:1fr}
+      .stats{grid-template-columns:1fr 1fr}
+      .review{grid-column:span 2}
+      .footer-grid{grid-template-columns:1fr 1fr}
     }
-
-    @media(max-width:640px){
-      .topbar{font-size:.66rem}
-      nav{min-height:70px}
-      .brand-logo{width:52px;height:52px}
-      .brand-text span{display:none}
-      .nav-call{padding:10px 12px;font-size:.78rem!important}
-      .hero-layout{padding:78px 0 105px}
-      h1{font-size:3.05rem}
+    @media(max-width:680px){
+      .brand img{width:180px}
+      .nav-call{font-size:.72rem;padding:9px 10px}
+      .hero-grid{padding:70px 0 85px}
+      h1{font-size:3rem}
       .actions{display:grid}
-      .button{width:100%}
-      .trust{display:grid;gap:11px}
-      .diagnostic-console{min-height:455px;padding:18px}
-      .scanner{width:180px;height:275px}
-      .fc2{right:8px}
-      .fc1{left:8px}
-      .fc3{left:12px}
-      .stats-grid,.services-grid,.why-grid,.areas,.form-row,.credential-row{grid-template-columns:1fr}
-      .stat{border-right:none!important;border-bottom:1px solid var(--line)}
-      .stat:last-child{border-bottom:none}
-      section{padding:76px 0}
-      .section-heading{display:block}
-      .section-heading .button{margin-top:20px}
-      .cta-box{display:block;padding:31px}
-      .cta-box .button{margin-top:24px}
-      .footer-inner{display:block;text-align:center}
-      .mobile-call{
-        position:fixed;
-        left:16px;
-        right:16px;
-        bottom:16px;
-        z-index:2000;
-        min-height:54px;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        border-radius:10px;
-        color:#021006;
-        background:var(--green);
-        text-decoration:none;
-        font-weight:900;
-        box-shadow:0 14px 35px rgba(0,0,0,.5);
-      }
-      body{padding-bottom:80px}
+      .btn{width:100%}
+      .credential-panel{grid-template-columns:1fr}
+      .ase-main{grid-column:auto;display:block;text-align:center}
+      .ase-main img{margin:0 auto 14px}
+      .credential-item{border-right:none;border-bottom:1px solid var(--line)}
+      .services-grid{grid-template-columns:1fr 1fr}
+      .price-layout,.row{grid-template-columns:1fr}
+      .stats{grid-template-columns:1fr}
+      .review{grid-column:auto}
+      .footer-grid{grid-template-columns:1fr}
+      .mobile-call{position:fixed;left:16px;right:16px;bottom:16px;z-index:2000;min-height:54px;display:flex;align-items:center;justify-content:center;border-radius:9px;background:linear-gradient(135deg,var(--green),var(--green2));color:#061006;text-decoration:none;font-weight:900;box-shadow:0 14px 35px rgba(0,0,0,.4)}
+      body{padding-bottom:78px}
     }
   </style>
 </head>
-
 <body>
-  <div class="topbar">Mobile Diagnostics & Repair • Fayetteville, North Carolina</div>
+  <div class="topbar">Mobile Diagnostic Specialist • Fayetteville, North Carolina</div>
 
   <header>
-    <div class="container">
-      <nav>
-        <a class="brand" href="#home">
-          <img src="./logo.png" class="brand-logo" alt="Oakline Automotive Diagnostics logo">
-          <div class="brand-text">
-            <strong>Oakline Automotive Diagnostics</strong>
-            <span>Mobile diagnostics and repair</span>
-          </div>
-        </a>
-
-        <div class="nav-links">
-          <a href="#services">Services</a>
-          <a href="#process">Our Process</a>
-          <a href="#about">About</a>
-          <a href="#reviews">Reviews</a>
-          <a href="#contact">Contact</a>
-          <a class="nav-call" href="tel:9104897254">Call (910) 489-7254</a>
-        </div>
+    <div class="container nav">
+      <a class="brand" href="#home"><img src="assets/oakline-logo.svg" alt="Oakline Automotive Diagnostics"></a>
+      <nav class="nav-links">
+        <a href="#home">Home</a><a href="#services">Services</a><a href="#process">Our Process</a>
+        <a href="#pricing">Pricing</a><a href="#map">Service Area</a><a href="#request">Contact</a>
+        <a class="nav-call" href="tel:9104897254">(910) 489-7254</a>
       </nav>
     </div>
   </header>
 
   <main>
     <section class="hero" id="home">
-      <div class="container">
-        <div class="hero-layout">
-          <div>
-            <div class="badge">ASE Master Certified Technician</div>
-            <h1>We Diagnose Before <span>We Replace.</span></h1>
-            <p class="hero-copy">
-              Professional mobile automotive diagnostics and repair brought directly to you. Accurate testing, honest recommendations and dealership-level diagnostic equipment—without the dealership experience.
-            </p>
-
-            <div class="actions">
-              <a class="button primary" href="tel:9104897254">Call Now • (910) 489-7254</a>
-              <a class="button secondary" href="sms:9104897254">Text for Service</a>
-            </div>
-
-            <div class="trust">
-              <span>Mobile service</span>
-              <span>Professional equipment</span>
-              <span>Evidence-based repairs</span>
-            </div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Mobile Diagnostic Specialist</div>
+          <h1>Advanced Diagnostics.<span>Real Solutions.</span></h1>
+          <p>Dealer-level diagnostics at your location. We find the problem others can’t—without parts guessing.</p>
+          <div class="hero-icons">
+            <div><i>▱</i><div><b>Mobile Service</b><span>We come to you</span></div></div>
+            <div><i>⚙</i><div><b>Dealer-Level</b><span>Tools and data</span></div></div>
+            <div><i>✓</i><div><b>Honest Answers</b><span>No guesswork</span></div></div>
           </div>
-
-          <div class="diagnostic-console" aria-label="Automotive diagnostic display illustration">
-            <div class="console-top">
-              <div class="console-status">System Connected</div>
-              <div class="console-id">OAKLINE / LIVE DATA</div>
-            </div>
-
-            <div class="scanner">
-              <div class="scanner-screen">
-                <div class="screen-label">Vehicle Data Stream</div>
-                <div class="wave"></div>
-              </div>
-              <div class="scanner-buttons">
-                <span></span><span></span><span></span>
-                <span></span><span></span><span></span>
-              </div>
-            </div>
-
-            <div class="floating-card fc1">Check Engine Diagnostics</div>
-            <div class="floating-card fc2">Electrical Testing</div>
-            <div class="floating-card fc3">Mobile Service</div>
+          <div class="actions">
+            <a class="btn primary" href="tel:9104897254">Call (910) 489-7254</a>
+            <a class="btn secondary" href="#request">Request Service</a>
           </div>
+        </div>
+        <div class="hero-visual">
+          <img src="assets/hero-car-scanner.jpg" alt="Performance vehicle connected to a Matco MaxFlex diagnostic scanner">
+          <span class="scanner-label">Matco MaxFlex Professional Scan Tool</span>
         </div>
       </div>
     </section>
 
-    <div class="stats">
-      <div class="container">
-        <div class="stats-grid">
-          <div class="stat"><strong>ASE Master Certified</strong><span>Professional automotive expertise</span></div>
-          <div class="stat"><strong>Mobile Service</strong><span>Diagnostics brought to your vehicle</span></div>
-          <div class="stat"><strong>Dealer-Level Tools</strong><span>Professional scan and test equipment</span></div>
-          <div class="stat"><strong>Diagnostics First</strong><span>No unnecessary parts replacement</span></div>
+    <section class="credential-strip" id="process">
+      <div class="container credential-panel">
+        <div class="ase-main">
+          <!-- Replace assets/ase-placeholder.png with your licensed ASE logo and keep the filename ase-logo.png. -->
+          <img id="aseLogo" src="assets/ase-placeholder.png" alt="ASE Master Certified">
+          <div><h2><span>ASE Master</span><br>Certified Technician</h2><p>Advanced training • Professional diagnostic standards • Proven technical knowledge</p></div>
         </div>
+        <div class="credential-item"><i>▣</i><b>Dealer-Level Scan Tools</b><span>Professional equipment</span></div>
+        <div class="credential-item"><i>◎</i><b>Real-World Experience</b><span>Advanced diagnostic work</span></div>
+        <div class="credential-item"><i>◇</i><b>Continuing Education</b><span>Current knowledge</span></div>
+        <div class="credential-item"><i>✓</i><b>Quality You Can Trust</b><span>Evidence before parts</span></div>
       </div>
-    </div>
+    </section>
 
-    <section id="services">
+    <section class="services" id="services">
       <div class="container">
-        <div class="section-heading">
-          <div>
-            <div class="eyebrow">Our Services</div>
-            <h2>Professional service without the guesswork.</h2>
-            <p class="intro">Oakline focuses on finding the actual cause of the problem before recommending repairs.</p>
-          </div>
-          <a class="button secondary" href="#contact">Request Service</a>
-        </div>
-
+        <div class="section-title"><div class="eyebrow">Our Diagnostic Services</div><h2>We Find the Problem So You Can Fix It <span>Right</span></h2></div>
         <div class="services-grid">
-          <article class="service-card"><div class="service-icon">⚙</div><h3>Check Engine Diagnostics</h3><p>Advanced scan-tool testing, live-data analysis and pinpoint testing to identify the root cause of warning lights.</p></article>
-          <article class="service-card"><div class="service-icon">⚡</div><h3>Electrical Diagnostics</h3><p>Wiring faults, shorts, parasitic drains, charging issues, modules and vehicle network problems.</p></article>
-          <article class="service-card"><div class="service-icon">⌁</div><h3>No-Start Diagnosis</h3><p>Crank-no-start, no-crank and intermittent starting concerns tested systematically instead of guessed at.</p></article>
-          <article class="service-card"><div class="service-icon">▣</div><h3>Brake Service</h3><p>Brake inspections and common brake repairs with clear findings and straightforward recommendations.</p></article>
-          <article class="service-card"><div class="service-icon">↻</div><h3>Maintenance & Repairs</h3><p>Batteries, tune-ups, sensors, charging systems and many common maintenance and repair services.</p></article>
-          <article class="service-card"><div class="service-icon">✓</div><h3>Pre-Purchase Inspections</h3><p>A professional inspection before buying a used vehicle, helping uncover problems before money changes hands.</p></article>
+          <article class="service-card"><div class="service-art"><img src="assets/check-engine.jpg" alt="Illuminated check engine warning symbol"></div><div class="service-copy"><h3>Check Engine Light</h3><p>Pinpoint the cause, not just the code.</p></div></article>
+          <article class="service-card"><div class="service-art"><img src="assets/electrical.jpg" alt="Automotive electrical wiring schematic"></div><div class="service-copy"><h3>Electrical Diagnostics</h3><p>Wiring faults, shorts, grounds, modules and more.</p></div></article>
+          <article class="service-card"><div class="service-art"><img src="assets/starter.jpg" alt="Automotive starter motor"></div><div class="service-copy"><h3>No Start / Hard Start</h3><p>Find why the vehicle will not start or is hard to start.</p></div></article>
+          <article class="service-card"><div class="service-art"><img src="assets/transmission.jpg" alt="Automatic transmission assembly"></div><div class="service-copy"><h3>Transmission Diagnostics</h3><p>TCM faults, solenoid tests, adaptives and performance concerns.</p></div></article>
+          <article class="service-card"><div class="service-art"><img src="assets/module.jpg" alt="Automotive electronic control module"></div><div class="service-copy"><h3>Module Diagnostics</h3><p>ECM, TCM, BCM and network communication diagnostics.</p></div></article>
+          <article class="service-card"><div class="service-art"><img src="assets/battery-charging.jpg" alt="Automotive alternator and battery"></div><div class="service-copy"><h3>Battery & Charging System</h3><p>Test battery health, charging output and starting systems.</p></div></article>
         </div>
-      </div>
-    </section>
 
-    <section class="process-section" id="process">
-      <div class="container">
-        <div class="split">
-          <div>
-            <div class="eyebrow">The Oakline Process</div>
-            <h2>A better way to solve vehicle problems.</h2>
-            <p class="intro">A trouble code identifies the system that detected a problem. It does not automatically identify the failed part.</p>
+        <div class="lower-grid">
+          <section class="dark-card difference">
+            <h3>The Oakline Difference</h3>
+            <ul><li>We diagnose—not guess.</li><li>We test before we replace.</li><li>Transparent findings and recommendations.</li><li>Mobile service—we come to you.</li><li>Professional, courteous and reliable.</li></ul>
+            <img src="assets/difference-scanner.jpg" alt="Matco MaxFlex scanner displaying live diagnostic data">
+          </section>
 
-            <div class="process-list">
-              <div class="process-item"><div class="process-number">1</div><div><h3>Verify the concern</h3><p>We confirm the symptoms and gather the information needed to begin testing correctly.</p></div></div>
-              <div class="process-item"><div class="process-number">2</div><div><h3>Test the system</h3><p>Scan data, electrical measurements and system testing are used to isolate the actual fault.</p></div></div>
-              <div class="process-item"><div class="process-number">3</div><div><h3>Explain the findings</h3><p>You receive a clear explanation and an honest recommendation before repair decisions are made.</p></div></div>
+          <section class="dark-card" id="pricing">
+            <h3>Diagnostic Pricing</h3>
+            <div class="price-layout">
+              <div class="price-main"><small>Complete Vehicle Diagnostic</small><div class="price">$89</div><ul><li>Professional system scan</li><li>Live-data analysis</li><li>Initial diagnostic testing</li><li>Honest recommendations</li></ul></div>
+              <div class="quote-list"><div class="quote-item"><b>Electrical Diagnostics</b><span>Call for Quote</span></div><div class="quote-item"><b>No Start / Hard Start</b><span>Call for Quote</span></div><div class="quote-item"><b>Mobile Repair Assistance</b><span>Custom Quote</span></div></div>
             </div>
-          </div>
+            <p class="pricing-note">Additional testing or repairs are approved before additional charges.</p>
+          </section>
 
-          <div class="data-panel">
-            <div class="eyebrow">Live Diagnostic Data</div>
-            <div class="scanline"></div>
-            <div class="data-row"><span>Scan-tool communication</span><span class="data-value">CONNECTED</span></div>
-            <div class="data-row"><span>Electrical circuit testing</span><span class="data-value">ACTIVE</span></div>
-            <div class="data-row"><span>Vehicle network analysis</span><span class="data-value">READY</span></div>
-            <div class="data-row"><span>Repair recommendation</span><span class="data-value">EVIDENCE BASED</span></div>
-          </div>
+          <section class="dark-card map-card" id="map">
+            <div class="map-head"><h3>Proudly Serving Fayetteville, NC</h3><p>Mobile service throughout Fayetteville and surrounding communities.</p></div>
+            <div class="map-frame"><iframe title="Oakline service area map" loading="lazy" src="https://www.google.com/maps?q=Fayetteville%2C%20North%20Carolina&z=10&output=embed"></iframe></div>
+          </section>
+        </div>
+
+        <div class="stats">
+          <div class="stat"><b>ASE</b><span>Master Certified</span></div>
+          <div class="stat"><b>Mobile</b><span>We come to you</span></div>
+          <div class="stat"><b>Dealer-Level</b><span>Diagnostic equipment</span></div>
+          <div class="stat review"><strong>“Professional, honest and focused on finding the actual problem.”</strong><div class="stars">★★★★★</div></div>
         </div>
       </div>
     </section>
 
-    <section id="about">
-      <div class="container">
-        <div class="about-grid">
-          <div class="logo-showcase">
-            <img src="./logo.png" alt="Oakline Automotive Diagnostics emblem">
-          </div>
-
-          <div class="about-copy">
-            <div class="eyebrow">About Oakline</div>
-            <h2>Local expertise. Professional standards.</h2>
-            <p>Oakline Automotive Diagnostics was created to give local vehicle owners access to accurate, convenient service without unnecessary confusion or pressure.</p>
-            <p>The goal is straightforward: identify the real problem, explain it clearly and help you make an informed repair decision.</p>
-
-            <div class="credential-row">
-              <div class="credential-card ase-card">
-                <div class="shield">ASE</div>
-                <div>
-                  <strong>ASE Master Certified Technician</strong>
-                  <span>Current certifications and proven technical knowledge.</span>
-                </div>
-              </div>
-
-              <div class="credential-card">
-                <div class="gear">⚙</div>
-                <div>
-                  <strong>Dealer-Level Diagnostics</strong>
-                  <span>Professional scan tools, circuit testing and live-data analysis.</span>
-                </div>
-              </div>
-            </div>
-          </div>
+    <section class="cta-request" id="request">
+      <div class="container cta-grid">
+        <div>
+          <div class="eyebrow">Need Diagnostics You Can Trust?</div>
+          <h2>We’ll Come to You and Get It Diagnosed Right.</h2>
+          <p>Submit the vehicle details and symptoms below, or call Oakline directly.</p>
+          <div class="actions"><a class="btn primary" href="tel:9104897254">Call (910) 489-7254</a><a class="btn secondary" href="sms:9104897254">Text Oakline</a></div>
+          <div class="cta-features"><span>Mobile service</span><span>Evenings and weekends</span><span>Fast response</span></div>
         </div>
-      </div>
-    </section>
-
-    <section class="why-section">
-      <div class="container">
-        <div class="eyebrow">Why Choose Oakline</div>
-        <h2>Built around accuracy, convenience and trust.</h2>
-
-        <div class="why-grid">
-          <div class="why-card"><strong>ASE Master Certified</strong><p>Professional-level experience backed by current automotive certifications.</p></div>
-          <div class="why-card"><strong>Mobile Convenience</strong><p>Diagnostics and select repairs brought to your home, workplace or vehicle location.</p></div>
-          <div class="why-card"><strong>Professional Equipment</strong><p>Modern scan tools, electrical testing equipment and proven diagnostic procedures.</p></div>
-          <div class="why-card"><strong>Honest Recommendations</strong><p>Clear findings and repair recommendations based on test results—not guesses.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="reviews">
-      <div class="container">
-        <div class="eyebrow">Customer Reviews</div>
-        <h2>Trust built one correct diagnosis at a time.</h2>
-        <p class="intro">Replace these placeholders with genuine customer feedback as reviews come in.</p>
-
-        <div class="reviews">
-          <div class="review-card"><div class="stars">★★★★★</div><p>Customer review coming soon.</p><small>Verified customer</small></div>
-          <div class="review-card"><div class="stars">★★★★★</div><p>Customer review coming soon.</p><small>Verified customer</small></div>
-          <div class="review-card"><div class="stars">★★★★★</div><p>Customer review coming soon.</p><small>Verified customer</small></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="area-section">
-      <div class="container">
-        <div class="eyebrow">Service Area</div>
-        <h2>Serving Fayetteville and nearby communities.</h2>
-        <p class="intro">Mobile service availability depends on location, vehicle condition and the service requested.</p>
-
-        <div class="areas">
-          <div class="area">Fayetteville</div>
-          <div class="area">Hope Mills</div>
-          <div class="area">Raeford</div>
-          <div class="area">Spring Lake</div>
-          <div class="area">Stedman</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="contact-grid">
-          <div>
-            <div class="eyebrow">Request Service</div>
-            <h2>Tell us what your vehicle is doing.</h2>
-            <p class="intro">Call, text or submit the form. Include the year, make, model and a short description of the symptoms.</p>
-
-            <div class="contact-list">
-              <div class="contact-item"><small>Call or text</small><strong>(910) 489-7254</strong></div>
-              <div class="contact-item"><small>Availability</small><strong>Evenings and weekends</strong></div>
-              <div class="contact-item"><small>Primary service area</small><strong>Fayetteville and surrounding communities</strong></div>
-            </div>
-          </div>
-
-          <form id="serviceForm">
-            <div class="form-row">
-              <div><label for="name">Your name</label><input id="name" required placeholder="Name"></div>
-              <div><label for="phone">Phone number</label><input id="phone" type="tel" required placeholder="Phone"></div>
-            </div>
-
-            <div class="form-row">
-              <div><label for="vehicle">Vehicle</label><input id="vehicle" required placeholder="Year, make and model"></div>
-              <div><label for="location">Location</label><input id="location" placeholder="City or ZIP code"></div>
-            </div>
-
-            <label for="service">Service needed</label>
-            <select id="service">
-              <option>Diagnostic service</option>
-              <option>Electrical problem</option>
-              <option>No-start problem</option>
-              <option>Brake service</option>
-              <option>Maintenance or repair</option>
-              <option>Pre-purchase inspection</option>
-              <option>Other</option>
-            </select>
-
-            <label for="message">Describe the problem</label>
-            <textarea id="message" required placeholder="Warning lights, noises, symptoms or anything else that may help."></textarea>
-
-            <button class="button primary" type="submit">Send Request by Text</button>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta">
-      <div class="container">
-        <div class="cta-box">
-          <div>
-            <h2>Ready to get the problem diagnosed correctly?</h2>
-            <p>Call Oakline Automotive Diagnostics to discuss your vehicle.</p>
-          </div>
-          <a class="button" href="tel:9104897254">Call (910) 489-7254</a>
-        </div>
+        <form id="serviceForm">
+          <div class="row"><label>Full Name<input id="name" required></label><label>Phone Number<input id="phone" type="tel" required></label></div>
+          <div class="row"><label>Vehicle<input id="vehicle" required placeholder="Year / Make / Model"></label><label>Location<input id="location" placeholder="City or ZIP"></label></div>
+          <label>Service<select id="service"><option>Complete vehicle diagnostic — starting at $89</option><option>Electrical diagnostic — request quote</option><option>No-start / hard-start diagnostic</option><option>Transmission diagnostic</option><option>Battery or charging-system test</option><option>Module diagnostic</option><option>Other</option></select></label>
+          <label>Issue / Symptoms<textarea id="message" required></textarea></label>
+          <button class="btn primary" type="submit">Send Request by Text</button>
+        </form>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container footer-inner">
-      <div>© 2026 Oakline Automotive Diagnostics. All rights reserved.</div>
-      <div>ASE-style credential graphic is not the official ASE logo.</div>
+    <div class="container footer-grid">
+      <div class="footer-brand"><img src="assets/oakline-logo.svg" alt="Oakline Automotive Diagnostics"><p>Advanced diagnostics. Real solutions. Mobile service in Fayetteville and surrounding communities.</p></div>
+      <div><h4>Services</h4><ul><li>Check Engine Diagnostics</li><li>Electrical Diagnostics</li><li>No Start / Hard Start</li><li>Transmission Diagnostics</li><li>Module Diagnostics</li><li>Battery & Charging</li></ul></div>
+      <div><h4>Quick Links</h4><ul><li><a href="#process">Our Process</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#map">Service Area</a></li><li><a href="#request">Contact</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li>(910) 489-7254</li><li>Fayetteville, NC</li><li>Mobile service</li><li>Evenings and weekends</li></ul></div>
     </div>
+    <div class="container copyright">© 2026 Oakline Automotive Diagnostics. All rights reserved.</div>
   </footer>
 
   <a class="mobile-call" href="tel:9104897254">Call Oakline • (910) 489-7254</a>
 
   <script>
-    document.getElementById("serviceForm").addEventListener("submit", function(event) {
+    // Use the user's licensed ASE logo automatically if it is uploaded as assets/ase-logo.png.
+    const aseLogo = document.getElementById("aseLogo");
+    const licensedASE = new Image();
+    licensedASE.onload = () => aseLogo.src = "assets/ase-logo.png";
+    licensedASE.src = "assets/ase-logo.png";
+
+    document.getElementById("serviceForm").addEventListener("submit", function(event){
       event.preventDefault();
-
-      const value = function(id) {
-        return encodeURIComponent(document.getElementById(id).value.trim());
-      };
-
-      const message =
+      const v = id => encodeURIComponent(document.getElementById(id).value.trim());
+      const body =
         "Oakline Service Request%0A%0A" +
-        "Name: " + value("name") + "%0A" +
-        "Phone: " + value("phone") + "%0A" +
-        "Vehicle: " + value("vehicle") + "%0A" +
-        "Location: " + value("location") + "%0A" +
-        "Service: " + value("service") + "%0A%0A" +
-        "Problem: " + value("message");
-
-      window.location.href = "sms:9104897254?body=" + message;
+        "Name: " + v("name") + "%0A" +
+        "Phone: " + v("phone") + "%0A" +
+        "Vehicle: " + v("vehicle") + "%0A" +
+        "Location: " + v("location") + "%0A" +
+        "Service: " + v("service") + "%0A%0A" +
+        "Problem: " + v("message");
+      window.location.href = "sms:9104897254?body=" + body;
     });
   </script>
 </body>
