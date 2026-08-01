@@ -160,6 +160,48 @@ footer ul{list-style:none;display:grid;gap:7px}
  .mobile-call{position:fixed;left:14px;right:14px;bottom:14px;z-index:1000;display:flex;align-items:center;justify-content:center;min-height:54px;border-radius:8px;background:var(--green);color:#0b1206;font-weight:900;box-shadow:0 14px 35px rgba(0,0,0,.38)}
  body{padding-bottom:76px}
 }
+
+/* Realistic hero photo */
+.photo-hero{
+  min-height:500px;
+  display:flex;
+  align-items:center;
+}
+.hero-photo-wrap{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  border:1px solid rgba(126,217,0,.2);
+  border-radius:22px;
+  background:#070907;
+  box-shadow:0 30px 60px rgba(0,0,0,.42);
+}
+.hero-photo-wrap img{
+  width:100%;
+  height:500px;
+  object-fit:cover;
+  object-position:center;
+}
+.photo-overlay{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(5,7,5,.18),transparent 30%),
+    radial-gradient(circle at 78% 60%,rgba(126,217,0,.08),transparent 28%);
+}
+@media(max-width:1050px){
+  .photo-hero{min-height:auto}
+  .hero-photo-wrap img{height:auto;min-height:410px}
+}
+@media(max-width:720px){
+  .hero-photo-wrap{border-radius:15px}
+  .hero-photo-wrap img{
+    min-height:300px;
+    object-position:58% center;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -186,56 +228,10 @@ footer ul{list-style:none;display:grid;gap:7px}
       <div class="actions"><a class="btn primary" href="#contact">Schedule Diagnostic</a><a class="btn secondary" href="#services">View Services</a></div>
     </div>
 
-    <div class="hero-visual" aria-label="Vehicle diagnostic illustration">
-      <div class="car-stage">
-        <svg viewBox="0 0 900 520" aria-hidden="true">
-          <defs>
-            <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#3b453c"/>
-              <stop offset=".45" stop-color="#111611"/>
-              <stop offset="1" stop-color="#040604"/>
-            </linearGradient>
-            <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#2c4432"/>
-              <stop offset="1" stop-color="#070a08"/>
-            </linearGradient>
-          </defs>
-          <ellipse cx="445" cy="445" rx="350" ry="22" fill="rgba(0,0,0,.55)"/>
-          <path d="M88 330c34-75 99-126 187-157l121-82h206c95 17 166 72 207 151l57 22 22 90-40 59H80l-42-48 19-45z" fill="url(#body)" stroke="#5b675d" stroke-width="5"/>
-          <path d="M306 170l119-64h167c74 17 124 55 164 119H238z" fill="url(#glass)" stroke="#67736a" stroke-width="4"/>
-          <path d="M425 108v116M594 108l57 116" stroke="#708078" stroke-width="4"/>
-          <path d="M91 339h190l69 39h378l72-54 77 7" fill="none" stroke="#657168" stroke-width="5"/>
-          <circle cx="241" cy="390" r="77" fill="#050605" stroke="#3a433b" stroke-width="7"/>
-          <circle cx="241" cy="390" r="42" fill="#39413a" stroke="#a3aaa5" stroke-width="6"/>
-          <circle cx="727" cy="390" r="77" fill="#050605" stroke="#3a433b" stroke-width="7"/>
-          <circle cx="727" cy="390" r="42" fill="#39413a" stroke="#a3aaa5" stroke-width="6"/>
-          <path d="M699 307l155-3-32 51-123 16z" fill="#e3eee6" stroke="#718079" stroke-width="4"/>
-          <path d="M711 312h108l-22 31-80 10z" fill="#b9e8ff"/>
-          <path d="M715 312l34 39M748 312l31 36M781 312l27 29" stroke="#4eb5ff" stroke-width="7"/>
-          <g stroke="#7ed900" stroke-width="3" fill="none" opacity=".78">
-            <path d="M283 202l54 86 96 39 103-72 105 32 88-58"/>
-            <path d="M337 288l-18 92M433 327l21 63M536 255l21 122M641 287l42 92"/>
-          </g>
-          <g fill="#7ed900">
-            <circle cx="283" cy="202" r="6"/><circle cx="433" cy="327" r="6"/><circle cx="641" cy="287" r="6"/><circle cx="729" cy="229" r="6"/>
-          </g>
-        </svg>
-      </div>
-      <div class="scan-card">
-        <div class="scan-top">MATCO MAXFLEX <span>CONNECTED</span></div>
-        <div class="scan-screen">
-          <div class="scan-grid">
-            <span>Engine RPM</span><b>782 rpm</b>
-            <span>Vehicle Speed</span><b>0 mph</b>
-            <span>Coolant Temp</span><b>194 °F</b>
-            <span>Battery Voltage</span><b>14.1 V</b>
-          </div>
-          <div class="wave">
-            <svg viewBox="0 0 400 80" preserveAspectRatio="none">
-              <polyline points="0,55 24,54 43,44 58,48 78,27 95,60 116,39 137,47 155,22 176,56 198,36 220,45 242,19 263,60 282,39 302,48 320,31 343,52 362,40 400,46" fill="none" stroke="#7ed900" stroke-width="4"/>
-            </svg>
-          </div>
-        </div>
+    <div class="hero-visual photo-hero" aria-label="Performance car connected to a professional diagnostic scan tool">
+      <div class="hero-photo-wrap">
+        <img src="assets/hero-car-scanner.webp" alt="Dark gray performance car connected to a professional diagnostic scanner in an automotive workshop">
+        <div class="photo-overlay"></div>
       </div>
     </div>
   </div>
