@@ -7,6 +7,26 @@
   <title>Oakline Automotive Diagnostics | Fayetteville NC</title>
   <meta name="description" content="ASE Master Certified mobile automotive diagnostics serving Fayetteville, Hope Mills, Raeford, Spring Lake, Stedman and nearby communities.">
   <meta name="theme-color" content="#050705">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://oaklinediagnostics.com/">
+  <meta property="og:title" content="Oakline Automotive Diagnostics">
+  <meta property="og:description" content="ASE Master Certified mobile automotive diagnostics serving Fayetteville and surrounding communities.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://oaklinediagnostics.com/">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"AutomotiveBusiness",
+    "name":"Oakline Automotive Diagnostics",
+    "url":"https://oaklinediagnostics.com/",
+    "telephone":"+1-910-489-7254",
+    "areaServed":[
+      "Fayetteville, NC","Hope Mills, NC","Raeford, NC",
+      "Spring Lake, NC","Stedman, NC","Eastover, NC"
+    ],
+    "description":"ASE Master Certified mobile automotive diagnostics and electrical testing."
+  }
+  </script>
 
   <style>
     :root{
@@ -45,7 +65,7 @@
     .container{width:min(1320px,calc(100% - 38px));margin:auto}
 
     header{
-      position:sticky;
+      position:relative;
       top:0;
       z-index:1000;
       background:rgba(3,4,3,.96);
@@ -76,7 +96,7 @@
     }
 
     .brand .oak{
-      width:235px;
+      width:285px;
       max-height:68px;
       object-fit:contain;
     }
@@ -247,9 +267,9 @@
 
     .scanner-svg{
       position:absolute;
-      width:52%;
-      right:-1%;
-      bottom:-1%;
+      width:58%;
+      right:-2%;
+      bottom:-4%;
       z-index:4;
       filter:drop-shadow(0 28px 28px rgba(0,0,0,.64));
     }
@@ -344,12 +364,17 @@
     .scanner-stage{
       position:relative;
       min-height:430px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:18px 0 6px;
     }
 
     .scanner-stage .scanner-svg{
-      width:92%;
-      right:0;
-      bottom:0;
+      position:relative;
+      width:min(100%,760px);
+      right:auto;
+      bottom:auto;
     }
 
     .services{
@@ -373,6 +398,9 @@
     }
 
     .card{
+      min-height:310px;
+      display:flex;
+      flex-direction:column;
       overflow:hidden;
       border:1px solid #d9dfd9;
       border-radius:9px;
@@ -385,7 +413,7 @@
     .card:hover{transform:translateY(-5px)}
 
     .card-art{
-      height:157px;
+      height:185px;
       display:grid;
       place-items:center;
       padding:12px;
@@ -393,12 +421,12 @@
     }
 
     .card-art svg{
-      width:132px;
-      height:132px;
+      width:152px;
+      height:152px;
       filter:drop-shadow(0 14px 12px rgba(0,0,0,.22));
     }
 
-    .card-copy{padding:16px 12px 21px}
+    .card-copy{padding:16px 12px 21px;display:flex;flex-direction:column;flex:1;justify-content:flex-start}
     .card h3{font-size:.93rem;text-transform:uppercase;line-height:1.08}
     .card p{margin-top:10px;color:#495149;font-size:.81rem}
 
@@ -421,7 +449,7 @@
     .bottom ul{display:grid;gap:10px;margin-top:18px;list-style:none}
     .bottom li::before{content:"✓";color:var(--green);margin-right:8px}
     .price{margin:10px 0;color:var(--green);font-size:4rem;font-weight:900}
-    .map iframe{width:100%;height:220px;margin-top:18px;border:0;border-radius:8px}
+    .map iframe{width:100%;height:270px;margin-top:18px;border:0;border-radius:8px}
     .stars{margin:14px 0;color:#ffc52b;letter-spacing:.13em}
 
     .request{
@@ -473,6 +501,118 @@
       border-top:1px solid var(--line);
       color:#aaa;
       text-align:center;
+    }
+
+
+    .request-copy{
+      padding:24px 0;
+    }
+
+    .request-trust{
+      display:grid;
+      gap:13px;
+      margin-top:28px;
+    }
+
+    .request-trust div{
+      padding:15px 17px;
+      border-left:4px solid var(--green);
+      border-radius:7px;
+      background:#fff;
+      box-shadow:0 8px 22px rgba(18,50,29,.08);
+    }
+
+    .request-trust strong{
+      display:block;
+      color:var(--ink);
+      text-transform:uppercase;
+      font-size:.86rem;
+    }
+
+    .request-trust span{
+      display:block;
+      margin-top:3px;
+      color:#687168;
+      font-size:.82rem;
+    }
+
+    .direct-call{
+      display:inline-block;
+      margin-top:22px;
+      color:var(--green-dark);
+      text-decoration:none;
+      font-weight:800;
+    }
+
+    footer{
+      text-align:left;
+    }
+
+    .footer-inner{
+      display:grid;
+      grid-template-columns:1.25fr repeat(3,1fr);
+      gap:34px;
+      align-items:start;
+    }
+
+    .footer-brand img{
+      width:250px;
+      max-height:74px;
+      object-fit:contain;
+    }
+
+    .footer-brand p{
+      max-width:300px;
+      margin-top:13px;
+      color:#b5bcb6;
+    }
+
+    .footer-column h4{
+      margin-bottom:12px;
+      color:#fff;
+      text-transform:uppercase;
+      font-size:.82rem;
+    }
+
+    .footer-column ul{
+      display:grid;
+      gap:7px;
+      list-style:none;
+      color:#b5bcb6;
+      font-size:.82rem;
+    }
+
+    .footer-column a{
+      text-decoration:none;
+    }
+
+    .footer-column a:hover{
+      color:var(--green);
+    }
+
+    .footer-bottom{
+      margin-top:30px;
+      padding-top:18px;
+      border-top:1px solid var(--line);
+      text-align:center;
+      color:#8f9791;
+      font-size:.75rem;
+    }
+
+    @media(max-width:900px){
+      .footer-inner{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media(max-width:620px){
+      .footer-inner{
+        grid-template-columns:1fr;
+      }
+
+      .request-copy{
+        padding-top:0;
+      }
     }
 
     .mobile-call{display:none}
@@ -527,6 +667,501 @@
       }
       body{padding-bottom:78px}
     }
+  
+    /* Enhanced final presentation */
+    header{
+      position:relative;
+    }
+
+    .nav{
+      min-height:112px;
+    }
+
+    .brand{
+      min-width:355px;
+    }
+
+    .brand .oak{
+      width:315px;
+      max-height:88px;
+    }
+
+    .hero-grid{
+      min-height:700px;
+      grid-template-columns:.86fr 1.14fr;
+      gap:54px;
+      padding:64px 0 48px;
+    }
+
+    .hero-copy{
+      position:relative;
+      z-index:8;
+    }
+
+    .hero-kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      margin-bottom:14px;
+      color:var(--green);
+      font-size:.78rem;
+      font-weight:900;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+    }
+
+    .hero-kicker::before{
+      content:"";
+      width:29px;
+      height:3px;
+      background:var(--green);
+      box-shadow:0 0 12px var(--green-glow);
+    }
+
+    .hero-price{
+      display:inline-flex;
+      align-items:center;
+      gap:13px;
+      margin-top:24px;
+      padding:13px 16px;
+      border:1px solid rgba(121,217,0,.38);
+      border-radius:10px;
+      background:rgba(8,13,9,.82);
+    }
+
+    .hero-price strong{
+      color:var(--green);
+      font-size:1.45rem;
+    }
+
+    .hero-price span{
+      color:#d8dfda;
+      font-size:.77rem;
+      line-height:1.25;
+    }
+
+    .hero-art{
+      min-height:555px;
+    }
+
+    .car-svg{
+      width:94%;
+      top:4%;
+    }
+
+    .scanner-svg{
+      width:62%;
+      right:-4%;
+      bottom:-5%;
+    }
+
+    .trust{
+      position:relative;
+      z-index:20;
+      box-shadow:0 -15px 45px rgba(0,0,0,.28);
+    }
+
+    .difference{
+      padding:86px 0 72px;
+    }
+
+    .difference-grid{
+      grid-template-columns:.86fr 1.14fr;
+    }
+
+    .difference-intro{
+      max-width:560px;
+      margin-top:16px;
+      color:var(--muted);
+    }
+
+    .process-steps{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      margin-top:31px;
+    }
+
+    .process-step{
+      padding:17px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      background:rgba(255,255,255,.035);
+    }
+
+    .process-step strong{
+      display:block;
+      color:var(--green);
+      font-size:1.15rem;
+    }
+
+    .process-step span{
+      display:block;
+      margin-top:5px;
+      color:#d1d7d2;
+      font-size:.78rem;
+    }
+
+    .services{
+      padding:72px 0 78px;
+    }
+
+    .section-heading{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:30px;
+    }
+
+    .section-heading p{
+      max-width:560px;
+      color:#626d64;
+    }
+
+    .cards{
+      margin-top:38px;
+    }
+
+    .card{
+      min-height:330px;
+    }
+
+    .card h3{
+      font-size:.98rem;
+    }
+
+    .card p{
+      line-height:1.45;
+    }
+
+    .bottom{
+      grid-template-columns:1fr 1.14fr 1fr;
+    }
+
+    .bottom>section{
+      min-height:390px;
+    }
+
+    .price-note{
+      margin-top:16px;
+      color:#aeb6b0;
+      font-size:.76rem;
+    }
+
+    .review-placeholder{
+      margin-top:18px;
+      padding:18px;
+      border:1px dashed rgba(121,217,0,.42);
+      border-radius:9px;
+      color:#d8ded9;
+      background:rgba(121,217,0,.045);
+    }
+
+    .review-placeholder strong{
+      display:block;
+      color:var(--green);
+      text-transform:uppercase;
+    }
+
+    .faq{
+      padding:72px 0;
+      background:#0a0e0b;
+      border-top:1px solid var(--line);
+    }
+
+    .faq h2{
+      font-size:2.35rem;
+      text-transform:uppercase;
+    }
+
+    .faq h2 span{
+      color:var(--green);
+    }
+
+    .faq-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:15px;
+      margin-top:30px;
+    }
+
+    details{
+      padding:18px 20px;
+      border:1px solid var(--line);
+      border-radius:9px;
+      background:#101511;
+    }
+
+    summary{
+      cursor:pointer;
+      color:#fff;
+      font-weight:900;
+    }
+
+    details p{
+      margin-top:12px;
+      color:var(--muted);
+      font-size:.88rem;
+    }
+
+    .request{
+      padding:88px 0;
+    }
+
+    form{
+      border-top:5px solid var(--green);
+    }
+
+    .field-help{
+      margin-top:-6px;
+      margin-bottom:12px;
+      color:#788179;
+      font-size:.72rem;
+    }
+
+    @media(max-width:1120px){
+      .brand{
+        min-width:280px;
+      }
+      .brand .oak{
+        width:235px;
+      }
+      .hero-grid{
+        grid-template-columns:1fr;
+      }
+      .hero-copy{
+        max-width:850px;
+      }
+      .hero-art{
+        min-height:520px;
+      }
+      .process-steps{
+        max-width:800px;
+      }
+      .section-heading{
+        display:block;
+      }
+      .section-heading p{
+        margin-top:12px;
+      }
+    }
+
+    @media(max-width:760px){
+      .brand{
+        min-width:auto;
+      }
+      .brand .oak{
+        width:180px;
+      }
+      .hero-grid{
+        min-height:auto;
+      }
+      .hero-art{
+        min-height:350px;
+      }
+      .process-steps,.faq-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+  
+    /* Realistic clean visual upgrade */
+    .realistic-hero{
+      min-height:560px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .hero-image-wrap{
+      position:relative;
+      width:100%;
+      overflow:hidden;
+      border:1px solid rgba(121,217,0,.2);
+      border-radius:20px;
+      background:#050705;
+      box-shadow:
+        0 32px 65px rgba(0,0,0,.5),
+        inset 0 0 42px rgba(121,217,0,.04);
+    }
+
+    .hero-image-wrap::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:
+        linear-gradient(90deg,rgba(3,4,3,.16),transparent 28%),
+        radial-gradient(circle at 78% 47%,rgba(121,217,0,.12),transparent 33%);
+    }
+
+    .hero-image-wrap img{
+      width:100%;
+      height:540px;
+      object-fit:cover;
+      object-position:center;
+    }
+
+    .scan-sweep{
+      position:absolute;
+      z-index:3;
+      top:-25%;
+      bottom:-25%;
+      left:-10%;
+      width:3px;
+      background:linear-gradient(transparent,var(--green),transparent);
+      box-shadow:0 0 24px var(--green);
+      opacity:.6;
+      animation:scanAcross 6s ease-in-out infinite;
+    }
+
+    @keyframes scanAcross{
+      0%,14%{left:18%;opacity:0}
+      24%{opacity:.65}
+      70%{left:89%;opacity:.65}
+      82%,100%{left:89%;opacity:0}
+    }
+
+    .scan-node{
+      position:absolute;
+      z-index:4;
+      width:9px;
+      height:9px;
+      border-radius:50%;
+      background:var(--green);
+      box-shadow:0 0 18px var(--green);
+      animation:nodePulse 2.2s infinite;
+    }
+
+    .node-a{left:43%;top:36%}
+    .node-b{left:65%;top:48%;animation-delay:.45s}
+    .node-c{left:78%;top:30%;animation-delay:.9s}
+
+    @keyframes nodePulse{
+      50%{transform:scale(1.65);opacity:.5}
+    }
+
+    .realistic-scanner{
+      min-height:425px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .scanner-frame{
+      position:relative;
+      overflow:hidden;
+      width:100%;
+      border:1px solid rgba(121,217,0,.2);
+      border-radius:18px;
+      background:#050705;
+      box-shadow:0 24px 52px rgba(0,0,0,.42);
+    }
+
+    .scanner-frame img{
+      width:100%;
+      height:410px;
+      object-fit:cover;
+      object-position:center;
+    }
+
+    .live-data-chip{
+      position:absolute;
+      right:19px;
+      bottom:18px;
+      display:flex;
+      align-items:center;
+      gap:9px;
+      padding:9px 13px;
+      border:1px solid rgba(121,217,0,.46);
+      border-radius:999px;
+      background:rgba(4,7,4,.88);
+      color:#fff;
+      font-size:.75rem;
+      font-weight:800;
+      text-transform:uppercase;
+      backdrop-filter:blur(8px);
+    }
+
+    .live-data-chip span{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--green);
+      box-shadow:0 0 13px var(--green);
+    }
+
+    .realistic-card-art{
+      height:190px;
+      padding:0;
+      overflow:hidden;
+      background:linear-gradient(#fff,#eef2ee);
+    }
+
+    .realistic-card-art img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform .35s ease;
+    }
+
+    .card:hover .realistic-card-art img{
+      transform:scale(1.045);
+    }
+
+    .card{
+      border-color:#d4dcd4;
+      box-shadow:0 13px 29px rgba(14,37,22,.13);
+    }
+
+    .card:hover{
+      box-shadow:0 19px 38px rgba(14,37,22,.18);
+    }
+
+    @media(max-width:1120px){
+      .realistic-hero{
+        min-height:auto;
+      }
+
+      .hero-image-wrap img{
+        height:auto;
+        min-height:420px;
+      }
+    }
+
+    @media(max-width:760px){
+      .hero-image-wrap{
+        border-radius:13px;
+      }
+
+      .hero-image-wrap img{
+        min-height:310px;
+        object-position:59% center;
+      }
+
+      .scan-sweep,.scan-node{
+        display:none;
+      }
+
+      .scanner-frame img{
+        height:285px;
+      }
+
+      .realistic-card-art{
+        height:220px;
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      .scan-sweep,.scan-node{
+        animation:none;
+      }
+
+      .card:hover .realistic-card-art img{
+        transform:none;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -553,8 +1188,13 @@
   <section class="hero" id="home">
     <div class="container hero-grid">
       <div class="hero-copy">
+        <div class="hero-kicker">ASE Master Certified • Mobile Diagnostics</div>
         <h1>Diagnostics.<span>Real</span><span>Solutions.</span></h1>
         <p>Dealer-level diagnostics at your location. Oakline finds the actual problem without unnecessary parts guessing.</p>
+        <div class="hero-price">
+          <strong>$89</strong>
+          <span>Complete vehicle diagnostic<br>starting price</span>
+        </div>
 
         <div class="benefits">
           <div class="benefit"><i>▰</i><div><b>Mobile Service</b><small>We come to you</small></div></div>
@@ -568,73 +1208,14 @@
         </div>
       </div>
 
-      <div class="hero-art" aria-label="Vehicle connected to a professional Matco MaxFlex diagnostic scanner">
-        <div class="glow"></div>
-
-        <svg class="car-svg" viewBox="0 0 900 470" aria-hidden="true">
-          <defs>
-            <linearGradient id="carBody" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#2c332d"/>
-              <stop offset=".38" stop-color="#080a08"/>
-              <stop offset=".75" stop-color="#151a16"/>
-              <stop offset="1" stop-color="#000"/>
-            </linearGradient>
-            <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#24382a"/>
-              <stop offset="1" stop-color="#060806"/>
-            </linearGradient>
-          </defs>
-          <ellipse cx="482" cy="416" rx="355" ry="25" fill="rgba(0,0,0,.75)"/>
-          <path d="M130 300c32-64 78-109 153-144l108-73h203c91 18 155 71 195 140l72 20 22 84-36 63H102l-40-45 18-42z" fill="url(#carBody)" stroke="#536055" stroke-width="4"/>
-          <path d="M317 153l105-54h157c71 17 113 51 151 111H259z" fill="url(#glass)" stroke="#5b685e" stroke-width="4"/>
-          <path d="M425 101v107M585 101l50 108" stroke="#607067" stroke-width="4"/>
-          <path d="M98 305h183l72 44h364l75-55 69 7" fill="none" stroke="#5d6a60" stroke-width="5"/>
-          <path d="M102 330h187l50 42H117z" fill="#030403" stroke="#49544b" stroke-width="4"/>
-          <path d="M677 293l151-4-31 50-119 15z" fill="#dce8df" stroke="#6a766d" stroke-width="4"/>
-          <path d="M690 298l102 0-22 31-75 8z" fill="#b8e9ff"/>
-          <path d="M691 298l33 39M723 298l31 36M754 298l27 29" stroke="#4bb4ff" stroke-width="7"/>
-          <circle cx="249" cy="367" r="76" fill="#050605" stroke="#38413a" stroke-width="7"/>
-          <circle cx="249" cy="367" r="41" fill="#343a35" stroke="#9ba39d" stroke-width="6"/>
-          <circle cx="718" cy="367" r="76" fill="#050605" stroke="#38413a" stroke-width="7"/>
-          <circle cx="718" cy="367" r="41" fill="#343a35" stroke="#9ba39d" stroke-width="6"/>
-          <path d="M100 271l87-7 34 27-115 15z" fill="#171d18" stroke="#5d695f" stroke-width="4"/>
-          <path d="M180 170c143-51 350-69 525 40" fill="none" stroke="#4d5a50" stroke-width="5"/>
-          <g stroke="#79d900" stroke-width="3" fill="none" opacity=".82">
-            <path d="M275 183l48 92 100 36 101-75 103 34 83-54"/>
-            <path d="M323 275l-20 86M423 311l25 64M524 236l26 119M627 270l48 89"/>
-          </g>
-        </svg>
-
-        <div class="scan-dot dot1"></div><div class="scan-dot dot2"></div><div class="scan-dot dot3"></div><div class="scan-dot dot4"></div>
-        <div class="obd-line"></div>
-
-        <svg class="scanner-svg" viewBox="0 0 610 430" aria-hidden="true">
-          <defs>
-            <linearGradient id="scannerShell" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#495049"/>
-              <stop offset=".35" stop-color="#1a1f1a"/>
-              <stop offset="1" stop-color="#080a08"/>
-            </linearGradient>
-          </defs>
-          <rect x="34" y="28" width="542" height="360" rx="44" fill="url(#scannerShell)" stroke="#667068" stroke-width="8"/>
-          <path d="M34 92L6 116v187l28 22M576 92l28 24v187l-28 22" fill="#1e241f" stroke="#5b655d" stroke-width="7"/>
-          <rect x="70" y="63" width="470" height="288" rx="15" fill="#020502" stroke="#333b34" stroke-width="5"/>
-          <text x="305" y="53" fill="#fff" font-size="25" font-weight="900" text-anchor="middle">MATCO</text>
-          <text x="305" y="385" fill="#fff" font-size="25" font-weight="900" text-anchor="middle">MAXFLEX</text>
-          <rect x="88" y="85" width="434" height="238" rx="8" fill="#07100a"/>
-          <text x="110" y="112" fill="#d7ddd8" font-size="13">Live Data</text>
-          <text x="473" y="112" fill="#79d900" font-size="13">Connected</text>
-          <g fill="#b9c2bb" font-size="11">
-            <text x="108" y="145">Engine RPM</text><text x="108" y="174">Vehicle Speed</text><text x="108" y="203">Coolant Temp</text><text x="108" y="232">Short Fuel Trim</text><text x="108" y="261">Battery Voltage</text>
-          </g>
-          <g fill="#79d900" font-size="11" text-anchor="end">
-            <text x="500" y="145">782 rpm</text><text x="500" y="174">0 mph</text><text x="500" y="203">194 °F</text><text x="500" y="232">2.3 %</text><text x="500" y="261">14.1 V</text>
-          </g>
-          <path d="M195 231l15-17 16 9 18-44 17 38 17-23 17 14 17-56 17 69 17-30 18 18 17-48 17 64 17-20 17 11" fill="none" stroke="#79d900" stroke-width="4"/>
-          <g fill="#9ca69f">
-            <circle cx="127" cy="300" r="8"/><circle cx="196" cy="300" r="8"/><circle cx="265" cy="300" r="8"/><circle cx="334" cy="300" r="8"/><circle cx="403" cy="300" r="8"/><circle cx="472" cy="300" r="8"/>
-          </g>
-        </svg>
+      <div class="hero-art realistic-hero" aria-label="Performance vehicle connected to a professional Matco MaxFlex diagnostic scanner">
+        <div class="hero-image-wrap">
+          <img src="assets/hero-car-scanner.webp" alt="Performance vehicle connected to a Matco MaxFlex diagnostic scanner">
+          <div class="scan-sweep" aria-hidden="true"></div>
+          <span class="scan-node node-a" aria-hidden="true"></span>
+          <span class="scan-node node-b" aria-hidden="true"></span>
+          <span class="scan-node node-c" aria-hidden="true"></span>
+        </div>
       </div>
     </div>
   </section>
@@ -652,6 +1233,7 @@
     <div class="container difference-grid">
       <div>
         <h2>The <span>Oakline</span> Difference</h2>
+        <p class="difference-intro">A trouble code points toward a system. Proper testing identifies the failure. Every recommendation is based on evidence gathered from the vehicle.</p>
         <ul class="checks">
           <li>We diagnose—not guess.</li>
           <li>Dealer-level tools and live data.</li>
@@ -661,117 +1243,60 @@
           <li>Honest recommendations.</li>
           <li>Evidence before repairs.</li>
         </ul>
+        <div class="process-steps">
+          <div class="process-step"><strong>01</strong><span>Confirm the complaint and scan the vehicle.</span></div>
+          <div class="process-step"><strong>02</strong><span>Test the system using live data and circuit checks.</span></div>
+          <div class="process-step"><strong>03</strong><span>Explain the findings and recommend the next step.</span></div>
+        </div>
       </div>
 
-      <div class="scanner-stage">
-        <svg class="scanner-svg" viewBox="0 0 610 430" aria-hidden="true">
-          <defs>
-            <linearGradient id="scannerShell2" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#495049"/>
-              <stop offset=".35" stop-color="#1a1f1a"/>
-              <stop offset="1" stop-color="#080a08"/>
-            </linearGradient>
-          </defs>
-          <rect x="34" y="28" width="542" height="360" rx="44" fill="url(#scannerShell2)" stroke="#667068" stroke-width="8"/>
-          <path d="M34 92L6 116v187l28 22M576 92l28 24v187l-28 22" fill="#1e241f" stroke="#5b655d" stroke-width="7"/>
-          <rect x="70" y="63" width="470" height="288" rx="15" fill="#020502" stroke="#333b34" stroke-width="5"/>
-          <text x="305" y="53" fill="#fff" font-size="25" font-weight="900" text-anchor="middle">MATCO</text>
-          <text x="305" y="385" fill="#fff" font-size="25" font-weight="900" text-anchor="middle">MAXFLEX</text>
-          <rect x="88" y="85" width="434" height="238" rx="8" fill="#07100a"/>
-          <text x="110" y="112" fill="#d7ddd8" font-size="13">Live Data</text>
-          <g fill="#b9c2bb" font-size="11">
-            <text x="108" y="145">Engine RPM</text><text x="108" y="174">Vehicle Speed</text><text x="108" y="203">Coolant Temp</text><text x="108" y="232">Short Fuel Trim</text><text x="108" y="261">Battery Voltage</text>
-          </g>
-          <g fill="#79d900" font-size="11" text-anchor="end">
-            <text x="500" y="145">782 rpm</text><text x="500" y="174">0 mph</text><text x="500" y="203">194 °F</text><text x="500" y="232">2.3 %</text><text x="500" y="261">14.1 V</text>
-          </g>
-          <path d="M195 231l15-17 16 9 18-44 17 38 17-23 17 14 17-56 17 69 17-30 18 18 17-48 17 64 17-20 17 11" fill="none" stroke="#79d900" stroke-width="4"/>
-        </svg>
+      <div class="scanner-stage realistic-scanner">
+        <div class="scanner-frame">
+          <img src="assets/difference-maxflex.webp" alt="Matco MaxFlex displaying live vehicle data">
+          <div class="live-data-chip">
+            <span></span>
+            Live data analysis
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="services" id="services">
     <div class="container">
-      <h2>Our <span>Diagnostic</span> Services</h2>
+      <div class="section-heading">
+        <h2>Our <span>Diagnostic</span> Services</h2>
+        <p>Focused testing for difficult electrical, drivability, starting, charging, transmission and communication concerns.</p>
+      </div>
 
       <div class="cards">
         <article class="card">
-          <div class="card-art">
-            <svg viewBox="0 0 150 150" aria-hidden="true">
-              <path d="M31 49h14l7-12h45l7 12h15l12 15v37l-12 15H31l-12-15V64z" fill="#ff9f00" stroke="#8d4b00" stroke-width="4"/>
-              <rect x="42" y="59" width="66" height="43" rx="8" fill="#121212"/>
-              <text x="75" y="78" text-anchor="middle" fill="#ffb21b" font-size="13" font-weight="900">CHECK</text>
-              <text x="75" y="95" text-anchor="middle" fill="#ffb21b" font-size="13" font-weight="900">ENGINE</text>
-            </svg>
-          </div>
+          <div class="card-art realistic-card-art"><img src="assets/check-engine.webp" alt="Illuminated check-engine warning symbol"></div>
           <div class="card-copy"><h3>Check Engine Diagnostics</h3><p>Find the real cause.</p></div>
         </article>
 
         <article class="card">
-          <div class="card-art">
-            <svg viewBox="0 0 150 150" aria-hidden="true">
-              <rect x="14" y="18" width="122" height="114" rx="8" fill="#fff" stroke="#c9d0ca" stroke-width="3"/>
-              <path d="M24 39h31v22h24v-14h28v31h19" fill="none" stroke="#e4473f" stroke-width="4"/>
-              <path d="M24 82h18v30h35V91h24v21h26" fill="none" stroke="#317bc3" stroke-width="4"/>
-              <path d="M32 28v96M61 28v96M91 28v96M120 28v96" stroke="#d0a634" stroke-width="2"/>
-              <circle cx="55" cy="39" r="7" fill="#79d900"/><circle cx="79" cy="61" r="7" fill="#ff9f00"/><circle cx="101" cy="91" r="7" fill="#79d900"/>
-            </svg>
-          </div>
+          <div class="card-art realistic-card-art"><img src="assets/electrical.webp" alt="Automotive electrical wiring schematic"></div>
           <div class="card-copy"><h3>Electrical Diagnostics</h3><p>Wiring, shorts and circuits.</p></div>
         </article>
 
         <article class="card">
-          <div class="card-art">
-            <svg viewBox="0 0 150 150" aria-hidden="true">
-              <rect x="25" y="58" width="78" height="44" rx="15" fill="#59635c" stroke="#1e241f" stroke-width="4"/>
-              <circle cx="45" cy="80" r="18" fill="#1a1e1b" stroke="#9ca59e" stroke-width="4"/>
-              <circle cx="45" cy="80" r="6" fill="#e2e6e3"/>
-              <rect x="99" y="68" width="34" height="25" rx="6" fill="#c8cec9" stroke="#242a25" stroke-width="4"/>
-              <rect x="105" y="72" width="21" height="17" fill="#b57635"/>
-              <rect x="49" y="43" width="46" height="17" rx="7" fill="#252b26"/>
-            </svg>
-          </div>
+          <div class="card-art realistic-card-art"><img src="assets/starter.webp" alt="Automotive starter motor"></div>
           <div class="card-copy"><h3>No Start Diagnostics</h3><p>Starts here. Solved here.</p></div>
         </article>
 
         <article class="card">
-          <div class="card-art">
-            <svg viewBox="0 0 150 150" aria-hidden="true">
-              <path d="M29 38h52l35 27-8 48-45 10-35-22-8-42z" fill="#737d76" stroke="#202621" stroke-width="4"/>
-              <circle cx="58" cy="72" r="28" fill="#c6ccc7" stroke="#343b35" stroke-width="4"/>
-              <circle cx="58" cy="72" r="14" fill="#292f2a"/>
-              <circle cx="58" cy="72" r="5" fill="#e5e8e6"/>
-              <path d="M86 46l29 18-5 20-27-9z" fill="#333a34" stroke="#202621" stroke-width="4"/>
-            </svg>
-          </div>
+          <div class="card-art realistic-card-art"><img src="assets/transmission.webp" alt="Automatic transmission assembly"></div>
           <div class="card-copy"><h3>Transmission Diagnostics</h3><p>Shifting, solenoids and more.</p></div>
         </article>
 
         <article class="card">
-          <div class="card-art">
-            <svg viewBox="0 0 150 150" aria-hidden="true">
-              <rect x="18" y="37" width="113" height="76" rx="11" fill="#222823" stroke="#080a08" stroke-width="4"/>
-              <rect x="31" y="49" width="87" height="52" rx="6" fill="#59625b"/>
-              <rect x="43" y="59" width="45" height="32" rx="4" fill="#112013"/>
-              <circle cx="105" cy="59" r="4" fill="#79d900"/><circle cx="105" cy="75" r="4" fill="#f2b22d"/><circle cx="105" cy="91" r="4" fill="#d7443e"/>
-              <g fill="#dce1dd"><rect x="11" y="52" width="12" height="10"/><rect x="11" y="70" width="12" height="10"/><rect x="11" y="88" width="12" height="10"/><rect x="127" y="52" width="13" height="10"/><rect x="127" y="70" width="13" height="10"/><rect x="127" y="88" width="13" height="10"/></g>
-            </svg>
-          </div>
+          <div class="card-art realistic-card-art"><img src="assets/module.webp" alt="Automotive control module"></div>
           <div class="card-copy"><h3>Module Diagnostics</h3><p>Communication and system faults.</p></div>
         </article>
 
         <article class="card">
-          <div class="card-art">
-            <svg viewBox="0 0 150 150" aria-hidden="true">
-              <rect x="62" y="43" width="72" height="72" rx="8" fill="#1d221e" stroke="#070907" stroke-width="4"/>
-              <rect x="73" y="31" width="15" height="14" rx="3" fill="#cdd2ce"/><rect x="111" y="31" width="15" height="14" rx="3" fill="#cdd2ce"/>
-              <rect x="75" y="60" width="47" height="34" rx="5" fill="#54a800"/>
-              <path d="M85 77h10m-5-5v10M106 77h10" stroke="#fff" stroke-width="4"/>
-              <circle cx="35" cy="82" r="27" fill="#5b655d" stroke="#1a1e1b" stroke-width="4"/>
-              <circle cx="35" cy="82" r="13" fill="#dce1dd"/><circle cx="35" cy="82" r="5" fill="#171b18"/>
-            </svg>
-          </div>
+          <div class="card-art realistic-card-art"><img src="assets/battery.webp" alt="Automotive battery and charging tester"></div>
           <div class="card-copy"><h3>Battery & Charging Testing</h3><p>Charging, drain and starting systems.</p></div>
         </article>
       </div>
@@ -789,6 +1314,8 @@
         <li>Initial testing</li>
         <li>Honest recommendations</li>
       </ul>
+      <p class="price-note">Additional testing is discussed before additional charges are approved.</p>
+      <div class="actions"><a class="btn primary" href="#contact">Schedule Diagnostic</a></div>
     </section>
 
     <section class="map" id="area">
@@ -798,17 +1325,54 @@
     </section>
 
     <section>
-      <h3>What Our Customers Say</h3>
+      <h3>Customer Reviews</h3>
       <div class="stars">★★★★★</div>
-      <p>“Professional, honest and focused on finding the actual problem instead of replacing unnecessary parts.”</p>
+      <div class="review-placeholder">
+        <strong>Real reviews coming soon</strong>
+        Add verified Google or Facebook customer feedback here as Oakline begins serving customers.
+      </div>
     </section>
   </div>
 
+
+  <section class="faq" id="faq">
+    <div class="container">
+      <h2>Common <span>Questions</span></h2>
+      <div class="faq-grid">
+        <details>
+          <summary>What does the $89 diagnostic include?</summary>
+          <p>It includes the initial mobile visit, a professional system scan, live-data review and initial diagnostic testing. More involved electrical or mechanical testing is discussed before additional charges.</p>
+        </details>
+        <details>
+          <summary>Do you repair the vehicle after diagnosing it?</summary>
+          <p>Select mobile repairs may be available after diagnosis. Repair availability depends on the vehicle, required equipment and work location.</p>
+        </details>
+        <details>
+          <summary>Do you only read trouble codes?</summary>
+          <p>No. Codes are used as clues. Testing may include live data, bi-directional controls, circuit checks, voltage-drop testing and component verification.</p>
+        </details>
+        <details>
+          <summary>What areas do you serve?</summary>
+          <p>Oakline serves Fayetteville and nearby communities including Hope Mills, Raeford, Spring Lake, Stedman and Eastover. Contact Oakline to confirm your location.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <section class="request" id="contact">
     <div class="container request-grid">
-      <div>
+      <div class="request-copy">
         <h2>Ready to Find the <span>Real Problem?</span></h2>
         <p>Tell us about the vehicle and symptoms. Oakline will contact you to confirm service and pricing.</p>
+
+        <div class="request-trust">
+          <div><strong>✓ Mobile Service</strong><span>We come to your home or workplace.</span></div>
+          <div><strong>✓ ASE Master Certified</strong><span>Professional diagnostic experience.</span></div>
+          <div><strong>✓ Text Response</strong><span>Your request opens directly in your messaging app.</span></div>
+          <div><strong>✓ Honest Recommendations</strong><span>No work is performed without your approval.</span></div>
+        </div>
+
+        <a class="direct-call" href="tel:9104897254">Prefer to call? <b>(910) 489-7254</b></a>
       </div>
 
       <form id="serviceForm">
@@ -833,14 +1397,57 @@
           </select>
         </label>
 
-        <label>Issue / Symptoms<textarea id="message" required></textarea></label>
+        <label>Issue / Symptoms<textarea id="message" required placeholder="Describe what the vehicle is doing, warning lights, noises, and when the problem happens."></textarea></label><div class="field-help">More detail helps Oakline prepare for the appointment.</div>
         <button class="btn primary" type="submit">Send Request by Text</button>
       </form>
     </div>
   </section>
 </main>
 
-<footer>© 2026 Oakline Automotive Diagnostics • Fayetteville, North Carolina • (910) 489-7254</footer>
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="assets/oakline-logo.svg" alt="Oakline Automotive Diagnostics">
+      <p>ASE Master Certified mobile diagnostics serving Fayetteville and surrounding communities.</p>
+    </div>
+
+    <div class="footer-column">
+      <h4>Services</h4>
+      <ul>
+        <li>Check Engine Diagnostics</li>
+        <li>Electrical Diagnostics</li>
+        <li>No Start Diagnostics</li>
+        <li>Transmission Diagnostics</li>
+        <li>Module Diagnostics</li>
+        <li>Battery & Charging Testing</li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Service Area</h4>
+      <ul>
+        <li>Fayetteville</li>
+        <li>Hope Mills</li>
+        <li>Raeford</li>
+        <li>Spring Lake</li>
+        <li>Stedman & Eastover</li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:9104897254">(910) 489-7254</a></li>
+        <li><a href="sms:9104897254">Text Oakline</a></li>
+        <li>Mobile Service</li>
+        <li>Evenings & Weekends</li>
+        <li><a href="#contact">Request Service</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">© 2026 Oakline Automotive Diagnostics. All rights reserved.</div>
+</footer>
 <a class="mobile-call" href="tel:9104897254">Call Oakline • (910) 489-7254</a>
 
 <script>
