@@ -296,11 +296,15 @@ footer ul{list-style:none;display:grid;gap:7px}
   gap:12px;
 }
 .reveal{
-  opacity:0;
-  transform:translateY(18px);
+  opacity:1;
+  transform:none;
   transition:opacity .65s ease,transform .65s ease;
 }
-.reveal.visible{
+.js-ready .reveal{
+  opacity:0;
+  transform:translateY(18px);
+}
+.js-ready .reveal.visible{
   opacity:1;
   transform:none;
 }
@@ -538,16 +542,16 @@ body.modal-open{
 <section class="section light" id="services">
   <div class="container">
     <div class="section-head">
-      <h2>Realistic <span>Diagnostic Services</span></h2>
-      <p>Each service is presented clearly with realistic automotive imagery and a short explanation.</p>
+      <h2>Expert Vehicle <span>Diagnostics</span></h2>
+      <p>Choose a diagnostic service below to learn what we test, common symptoms, and what to expect during your appointment.</p>
     </div>
     <div class="cards">
-      <article class="service-card"><img src="assets/check-engine.webp" alt="Check engine light on an instrument cluster"><div class="service-content"><h3>Check Engine Diagnostics</h3><p>Find the actual cause of the warning light—not just the code.</p><button class="learn learn-button" type="button" data-service="check-engine">Learn more →</button></div></article>
-      <article class="service-card"><img src="assets/electrical.webp" alt="Automotive electrical wiring diagnosis"><div class="service-content"><h3>Electrical Diagnostics</h3><p>Wiring, sensors, shorts, grounds and communication faults.</p><button class="learn learn-button" type="button" data-service="electrical">Learn more →</button></div></article>
-      <article class="service-card"><img src="assets/no-start.webp" alt="Automotive no-start diagnostic testing"><div class="service-content"><h3>No Start Diagnostics</h3><p>Starting, battery, fuel, ignition and control-system concerns.</p><button class="learn learn-button" type="button" data-service="no-start">Learn more →</button></div></article>
-      <article class="service-card"><img src="assets/transmission.webp" alt="Automatic transmission internal components"><div class="service-content"><h3>Transmission Diagnostics</h3><p>Shifting problems, solenoids, controls and live-data testing.</p><button class="learn learn-button" type="button" data-service="transmission">Learn more →</button></div></article>
-      <article class="service-card"><img src="assets/module.webp" alt="Automotive control module"><div class="service-content"><h3>Module Diagnostics</h3><p>Module communication, networks, sensors and actuator faults.</p><button class="learn learn-button" type="button" data-service="module">Learn more →</button></div></article>
-      <article class="service-card"><img src="assets/battery.webp" alt="Automotive battery and charging system testing"><div class="service-content"><h3>Battery & Charging</h3><p>Battery condition, alternator output and parasitic-draw testing.</p><button class="learn learn-button" type="button" data-service="battery">Learn more →</button></div></article>
+      <article class="service-card"><img src="assets/check-engine.webp" alt="Check engine light on an instrument cluster"><div class="service-content"><h3>Check Engine Light Diagnostics</h3><p>Find the root cause—not just the code.</p><button class="learn learn-button" type="button" data-service="check-engine">Learn more →</button></div></article>
+      <article class="service-card"><img src="assets/electrical.webp" alt="Automotive electrical wiring diagnosis"><div class="service-content"><h3>Electrical &amp; Wiring Diagnostics</h3><p>Testing shorts, opens, voltage drops and network faults.</p><button class="learn learn-button" type="button" data-service="electrical">Learn more →</button></div></article>
+      <article class="service-card"><img src="assets/no-start.webp" alt="Automotive no-start diagnostic testing"><div class="service-content"><h3>No-Start Diagnostics</h3><p>Accurate diagnosis for crank/no-start and no-crank conditions.</p><button class="learn learn-button" type="button" data-service="no-start">Learn more →</button></div></article>
+      <article class="service-card"><img src="assets/transmission.webp" alt="Automatic transmission internal components"><div class="service-content"><h3>Transmission &amp; Shift Diagnostics</h3><p>Testing shift concerns, solenoids and electronic controls.</p><button class="learn learn-button" type="button" data-service="transmission">Learn more →</button></div></article>
+      <article class="service-card"><img src="assets/module.webp" alt="Automotive control module"><div class="service-content"><h3>Computer &amp; Module Diagnostics</h3><p>Advanced communication and module diagnostics.</p><button class="learn learn-button" type="button" data-service="module">Learn more →</button></div></article>
+      <article class="service-card"><img src="assets/battery.webp" alt="Automotive battery and charging system testing"><div class="service-content"><h3>Battery &amp; Charging System Testing</h3><p>Complete starting, charging and battery-health testing.</p><button class="learn learn-button" type="button" data-service="battery">Learn more →</button></div></article>
     </div>
   </div>
 </section>
@@ -615,7 +619,7 @@ body.modal-open{
     <div class="info">
       <section class="info-box pricing-highlight" id="pricing"><h3>Diagnostic Pricing</h3><p>Complete Vehicle Diagnostic</p><div class="price">$89</div><ul><li>Professional system scan</li><li>Live-data analysis</li><li>Initial diagnostic testing</li><li>Honest recommendations</li></ul><div class="actions"><a class="btn primary" href="#contact">Schedule Diagnostic</a></div></section>
       <section class="info-box map" id="area"><h3>Service Area</h3><p>Fayetteville, Hope Mills, Raeford, Spring Lake, Stedman, Eastover and nearby communities.</p><iframe title="Oakline service area" loading="lazy" src="https://www.google.com/maps?q=Fayetteville%2C%20North%20Carolina&z=10&output=embed"></iframe></section>
-      <section class="info-box darkbox"><h3>What to Expect</h3><ul><li>Clear communication</li><li>Evidence before repairs</li><li>No surprise work</li><li>Professional mobile service</li></ul><p style="margin-top:18px;color:#b8c1ba">Verified customer reviews can be added here once available.</p></section>
+      <section class="info-box darkbox"><h3>What to Expect</h3><ul><li>Clear communication</li><li>Evidence before repairs</li><li>No surprise work</li><li>Professional mobile service</li></ul></section>
     </div>
   </div>
 </section>
@@ -664,6 +668,42 @@ body.modal-open{
 </footer>
 
 <a class="mobile-call" href="tel:9104897254">Call Oakline • (910) 489-7254</a>
+<div class="modal-backdrop" id="serviceModal" aria-hidden="true">
+  <article class="service-modal" role="dialog" aria-modal="true" aria-labelledby="serviceModalTitle">
+    <button class="modal-close" type="button" id="modalClose" aria-label="Close service details">×</button>
+
+    <div class="modal-hero">
+      <img id="serviceModalImage" src="assets/check-engine.webp" alt="">
+      <div class="modal-title-wrap">
+        <small>Oakline Diagnostic Service</small>
+        <h3 id="serviceModalTitle">Service Details</h3>
+      </div>
+    </div>
+
+    <div class="modal-body">
+      <p id="serviceModalDescription"></p>
+
+      <div class="modal-columns">
+        <section class="modal-block">
+          <h4>What We Check</h4>
+          <ul id="serviceModalChecks"></ul>
+        </section>
+
+        <section class="modal-block">
+          <h4>Common Symptoms</h4>
+          <ul id="serviceModalSymptoms"></ul>
+        </section>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn primary" type="button" id="bookServiceButton">Book This Diagnostic</button>
+        <button class="btn" type="button" id="modalCloseSecondary" style="border-color:#cfd7d0;color:#202720;background:#fff">Close</button>
+      </div>
+    </div>
+  </article>
+</div>
+
+
 <script>
 
 const serviceDetails = {
@@ -811,7 +851,7 @@ function populateList(element, items){
 
 function openServiceModal(serviceKey){
   const detail = serviceDetails[serviceKey];
-  if(!detail) return;
+  if(!detail || !serviceModal) return;
 
   activeService = detail;
   modalTitle.textContent = detail.title;
@@ -828,6 +868,7 @@ function openServiceModal(serviceKey){
 }
 
 function closeServiceModal(){
+  if(!serviceModal) return;
   serviceModal.classList.remove("open");
   serviceModal.setAttribute("aria-hidden", "true");
   document.body.classList.remove("modal-open");
@@ -837,10 +878,10 @@ document.querySelectorAll(".learn-button").forEach(button => {
   button.addEventListener("click", () => openServiceModal(button.dataset.service));
 });
 
-modalClose.addEventListener("click", closeServiceModal);
-modalCloseSecondary.addEventListener("click", closeServiceModal);
+if(modalClose) modalClose.addEventListener("click", closeServiceModal);
+if(modalCloseSecondary) modalCloseSecondary.addEventListener("click", closeServiceModal);
 
-serviceModal.addEventListener("click", event => {
+if(serviceModal) serviceModal.addEventListener("click", event => {
   if(event.target === serviceModal) closeServiceModal();
 });
 
@@ -850,7 +891,7 @@ document.addEventListener("keydown", event => {
   }
 });
 
-bookServiceButton.addEventListener("click", () => {
+if(bookServiceButton) bookServiceButton.addEventListener("click", () => {
   if(activeService){
     const serviceSelect = document.getElementById("service");
     const matchingOption = Array.from(serviceSelect.options).find(
@@ -871,57 +912,27 @@ bookServiceButton.addEventListener("click", () => {
 });
 
 
-document.getElementById("serviceForm").addEventListener("submit",function(e){
+const serviceForm=document.getElementById("serviceForm");
+if(serviceForm) serviceForm.addEventListener("submit",function(e){
   e.preventDefault();
   const v=id=>encodeURIComponent(document.getElementById(id).value.trim());
   const body="Oakline Service Request%0A%0AName: "+v("name")+"%0APhone: "+v("phone")+"%0AVehicle: "+v("vehicle")+"%0ALocation: "+v("location")+"%0APreferred Day: "+v("preferredDay")+"%0APreferred Time: "+v("preferredTime")+"%0AService: "+v("service")+"%0A%0AIssue: "+v("message");
   window.location.href="sms:9104897254?body="+body;
 });
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add("visible");
-      observer.unobserve(entry.target);
-    }
-  });
-},{threshold:.12});
-document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+if("IntersectionObserver" in window){
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:.12});
+  document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+}else{
+  document.querySelectorAll(".reveal").forEach(el=>el.classList.add("visible"));
+}
 </script>
-
-<div class="modal-backdrop" id="serviceModal" aria-hidden="true">
-  <article class="service-modal" role="dialog" aria-modal="true" aria-labelledby="serviceModalTitle">
-    <button class="modal-close" type="button" id="modalClose" aria-label="Close service details">×</button>
-
-    <div class="modal-hero">
-      <img id="serviceModalImage" src="assets/check-engine.webp" alt="">
-      <div class="modal-title-wrap">
-        <small>Oakline Diagnostic Service</small>
-        <h3 id="serviceModalTitle">Service Details</h3>
-      </div>
-    </div>
-
-    <div class="modal-body">
-      <p id="serviceModalDescription"></p>
-
-      <div class="modal-columns">
-        <section class="modal-block">
-          <h4>What We Check</h4>
-          <ul id="serviceModalChecks"></ul>
-        </section>
-
-        <section class="modal-block">
-          <h4>Common Symptoms</h4>
-          <ul id="serviceModalSymptoms"></ul>
-        </section>
-      </div>
-
-      <div class="modal-actions">
-        <button class="btn primary" type="button" id="bookServiceButton">Book This Diagnostic</button>
-        <button class="btn" type="button" id="modalCloseSecondary" style="border-color:#cfd7d0;color:#202720;background:#fff">Close</button>
-      </div>
-    </div>
-  </article>
-</div>
 
 </body>
 </html>
