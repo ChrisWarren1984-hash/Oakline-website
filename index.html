@@ -318,6 +318,185 @@ footer ul{list-style:none;display:grid;gap:7px}
   .reveal{opacity:1;transform:none;transition:none}
 }
 
+
+/* Service detail modal */
+.learn-button{
+  padding:0;
+  border:0;
+  background:none;
+  cursor:pointer;
+  font:inherit;
+}
+
+.modal-backdrop{
+  position:fixed;
+  inset:0;
+  z-index:3000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:22px;
+  background:rgba(0,0,0,.72);
+  backdrop-filter:blur(7px);
+}
+
+.modal-backdrop.open{
+  display:flex;
+}
+
+.service-modal{
+  position:relative;
+  width:min(680px,100%);
+  max-height:min(760px,90vh);
+  overflow:auto;
+  border:1px solid rgba(126,217,0,.32);
+  border-radius:18px;
+  background:#fff;
+  color:var(--ink);
+  box-shadow:0 30px 90px rgba(0,0,0,.48);
+}
+
+.modal-hero{
+  position:relative;
+  min-height:190px;
+  overflow:hidden;
+  background:#080b08;
+}
+
+.modal-hero img{
+  width:100%;
+  height:230px;
+  object-fit:cover;
+}
+
+.modal-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 25%,rgba(4,6,4,.82));
+}
+
+.modal-title-wrap{
+  position:absolute;
+  z-index:2;
+  left:26px;
+  right:70px;
+  bottom:22px;
+  color:#fff;
+}
+
+.modal-title-wrap small{
+  display:block;
+  color:var(--green);
+  font-size:.72rem;
+  font-weight:900;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.modal-title-wrap h3{
+  margin-top:5px;
+  font-size:1.65rem;
+  text-transform:uppercase;
+}
+
+.modal-close{
+  position:absolute;
+  z-index:5;
+  top:16px;
+  right:16px;
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:50%;
+  background:rgba(4,6,4,.72);
+  color:#fff;
+  font-size:1.35rem;
+  cursor:pointer;
+}
+
+.modal-body{
+  padding:27px;
+}
+
+.modal-body>p{
+  color:#4f5950;
+}
+
+.modal-columns{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  margin-top:24px;
+}
+
+.modal-block{
+  padding:18px;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:var(--paper);
+}
+
+.modal-block h4{
+  color:var(--ink);
+  font-size:.9rem;
+  text-transform:uppercase;
+}
+
+.modal-block ul{
+  display:grid;
+  gap:8px;
+  margin-top:12px;
+  list-style:none;
+  color:#5a645b;
+  font-size:.84rem;
+}
+
+.modal-block li::before{
+  content:"✓";
+  margin-right:8px;
+  color:var(--green-dark);
+  font-weight:900;
+}
+
+.modal-actions{
+  display:flex;
+  gap:12px;
+  margin-top:24px;
+}
+
+.modal-actions .btn{
+  flex:1;
+}
+
+body.modal-open{
+  overflow:hidden;
+}
+
+@media(max-width:620px){
+  .modal-backdrop{
+    padding:12px;
+  }
+
+  .modal-columns{
+    grid-template-columns:1fr;
+  }
+
+  .modal-actions{
+    display:grid;
+  }
+
+  .modal-body{
+    padding:21px;
+  }
+
+  .modal-title-wrap{
+    left:20px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -363,12 +542,12 @@ footer ul{list-style:none;display:grid;gap:7px}
       <p>Each service is presented clearly with realistic automotive imagery and a short explanation.</p>
     </div>
     <div class="cards">
-      <article class="service-card"><img src="assets/check-engine.webp" alt="Check engine light on an instrument cluster"><div class="service-content"><h3>Check Engine Diagnostics</h3><p>Find the actual cause of the warning light—not just the code.</p><span class="learn">Learn more →</span></div></article>
-      <article class="service-card"><img src="assets/electrical.webp" alt="Automotive electrical wiring diagnosis"><div class="service-content"><h3>Electrical Diagnostics</h3><p>Wiring, sensors, shorts, grounds and communication faults.</p><span class="learn">Learn more →</span></div></article>
-      <article class="service-card"><img src="assets/no-start.webp" alt="Automotive no-start diagnostic testing"><div class="service-content"><h3>No Start Diagnostics</h3><p>Starting, battery, fuel, ignition and control-system concerns.</p><span class="learn">Learn more →</span></div></article>
-      <article class="service-card"><img src="assets/transmission.webp" alt="Automatic transmission internal components"><div class="service-content"><h3>Transmission Diagnostics</h3><p>Shifting problems, solenoids, controls and live-data testing.</p><span class="learn">Learn more →</span></div></article>
-      <article class="service-card"><img src="assets/module.webp" alt="Automotive control module"><div class="service-content"><h3>Module Diagnostics</h3><p>Module communication, networks, sensors and actuator faults.</p><span class="learn">Learn more →</span></div></article>
-      <article class="service-card"><img src="assets/battery.webp" alt="Automotive battery and charging system testing"><div class="service-content"><h3>Battery & Charging</h3><p>Battery condition, alternator output and parasitic-draw testing.</p><span class="learn">Learn more →</span></div></article>
+      <article class="service-card"><img src="assets/check-engine.webp" alt="Check engine light on an instrument cluster"><div class="service-content"><h3>Check Engine Diagnostics</h3><p>Find the actual cause of the warning light—not just the code.</p><button class="learn learn-button" type="button" data-service="check-engine">Learn more →</button></div></article>
+      <article class="service-card"><img src="assets/electrical.webp" alt="Automotive electrical wiring diagnosis"><div class="service-content"><h3>Electrical Diagnostics</h3><p>Wiring, sensors, shorts, grounds and communication faults.</p><button class="learn learn-button" type="button" data-service="electrical">Learn more →</button></div></article>
+      <article class="service-card"><img src="assets/no-start.webp" alt="Automotive no-start diagnostic testing"><div class="service-content"><h3>No Start Diagnostics</h3><p>Starting, battery, fuel, ignition and control-system concerns.</p><button class="learn learn-button" type="button" data-service="no-start">Learn more →</button></div></article>
+      <article class="service-card"><img src="assets/transmission.webp" alt="Automatic transmission internal components"><div class="service-content"><h3>Transmission Diagnostics</h3><p>Shifting problems, solenoids, controls and live-data testing.</p><button class="learn learn-button" type="button" data-service="transmission">Learn more →</button></div></article>
+      <article class="service-card"><img src="assets/module.webp" alt="Automotive control module"><div class="service-content"><h3>Module Diagnostics</h3><p>Module communication, networks, sensors and actuator faults.</p><button class="learn learn-button" type="button" data-service="module">Learn more →</button></div></article>
+      <article class="service-card"><img src="assets/battery.webp" alt="Automotive battery and charging system testing"><div class="service-content"><h3>Battery & Charging</h3><p>Battery condition, alternator output and parasitic-draw testing.</p><button class="learn learn-button" type="button" data-service="battery">Learn more →</button></div></article>
     </div>
   </div>
 </section>
@@ -486,6 +665,212 @@ footer ul{list-style:none;display:grid;gap:7px}
 
 <a class="mobile-call" href="tel:9104897254">Call Oakline • (910) 489-7254</a>
 <script>
+
+const serviceDetails = {
+  "check-engine": {
+    title: "Check Engine Diagnostics",
+    image: "assets/check-engine.webp",
+    dropdown: "Complete diagnostic — starting at $89",
+    description: "A trouble code identifies the system that detected a problem, but it does not automatically identify the failed part. Oakline uses live data and targeted testing to determine the actual cause.",
+    checks: [
+      "Stored, pending and history trouble codes",
+      "Live engine and emissions data",
+      "Sensor and actuator operation",
+      "Related wiring and circuit integrity",
+      "The failed system before parts are recommended"
+    ],
+    symptoms: [
+      "Check-engine light",
+      "Rough idle or stalling",
+      "Poor fuel economy",
+      "Lack of power",
+      "Failed emissions inspection"
+    ]
+  },
+  "electrical": {
+    title: "Electrical Diagnostics",
+    image: "assets/electrical.webp",
+    dropdown: "Electrical diagnostic",
+    description: "Electrical faults can be intermittent and may affect several systems at once. Oakline traces the circuit and verifies power, ground and signal integrity before recommending repairs.",
+    checks: [
+      "Short and open circuits",
+      "Voltage-drop and ground testing",
+      "Connectors, terminals and wiring",
+      "Sensor reference and signal circuits",
+      "Vehicle network communication"
+    ],
+    symptoms: [
+      "Blown fuses",
+      "Intermittent accessories",
+      "Battery going dead",
+      "Multiple warning lights",
+      "Modules not communicating"
+    ]
+  },
+  "no-start": {
+    title: "No Start Diagnostics",
+    image: "assets/no-start.webp",
+    dropdown: "No-start diagnostic",
+    description: "Whether the vehicle will not crank, cranks without starting or starts only intermittently, Oakline tests the systems required for reliable starting.",
+    checks: [
+      "Battery condition and voltage",
+      "Starter and control circuit",
+      "Fuel pressure and injector operation",
+      "Ignition and engine-speed signals",
+      "Security and engine-management systems"
+    ],
+    symptoms: [
+      "No crank",
+      "Cranks but will not start",
+      "Slow or intermittent cranking",
+      "Starts and immediately stalls",
+      "Long crank before starting"
+    ]
+  },
+  "transmission": {
+    title: "Transmission Diagnostics",
+    image: "assets/transmission.webp",
+    dropdown: "Transmission diagnostic",
+    description: "Transmission symptoms can be caused by electrical, hydraulic, mechanical or engine-related problems. Oakline evaluates control data and system operation before conclusions are made.",
+    checks: [
+      "Transmission control trouble codes",
+      "Solenoid and pressure-control commands",
+      "Input and output speed data",
+      "Fluid-temperature and range signals",
+      "Related engine and network faults"
+    ],
+    symptoms: [
+      "Harsh or delayed shifts",
+      "Slipping or flare",
+      "No movement in gear",
+      "Transmission warning light",
+      "Failsafe or limp mode"
+    ]
+  },
+  "module": {
+    title: "Module Diagnostics",
+    image: "assets/module.webp",
+    dropdown: "Module diagnostic",
+    description: "Modern vehicles rely on multiple computers communicating over shared networks. Oakline determines whether the concern is caused by the module, its circuits or the communication network.",
+    checks: [
+      "ECM, TCM, BCM and other modules",
+      "Module power and ground circuits",
+      "CAN-network communication",
+      "Sensor and actuator feedback",
+      "Communication and configuration faults"
+    ],
+    symptoms: [
+      "No communication with a module",
+      "Multiple unrelated warning lights",
+      "Accessories operating incorrectly",
+      "Intermittent network faults",
+      "Modules repeatedly setting codes"
+    ]
+  },
+  "battery": {
+    title: "Battery & Charging Testing",
+    image: "assets/battery.webp",
+    dropdown: "Battery and charging test",
+    description: "Oakline tests the complete starting and charging system so a weak battery, alternator problem or electrical drain is identified correctly.",
+    checks: [
+      "Battery state of health",
+      "Cranking voltage and starter draw",
+      "Alternator output and regulation",
+      "Cable and connection voltage drop",
+      "Parasitic battery drains when needed"
+    ],
+    symptoms: [
+      "Slow cranking",
+      "Repeated dead battery",
+      "Battery warning light",
+      "Dim or flickering lights",
+      "Electrical issues after sitting"
+    ]
+  }
+};
+
+const serviceModal = document.getElementById("serviceModal");
+const modalClose = document.getElementById("modalClose");
+const modalCloseSecondary = document.getElementById("modalCloseSecondary");
+const bookServiceButton = document.getElementById("bookServiceButton");
+const modalTitle = document.getElementById("serviceModalTitle");
+const modalDescription = document.getElementById("serviceModalDescription");
+const modalChecks = document.getElementById("serviceModalChecks");
+const modalSymptoms = document.getElementById("serviceModalSymptoms");
+const modalImage = document.getElementById("serviceModalImage");
+let activeService = null;
+
+function populateList(element, items){
+  element.innerHTML = "";
+  items.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    element.appendChild(li);
+  });
+}
+
+function openServiceModal(serviceKey){
+  const detail = serviceDetails[serviceKey];
+  if(!detail) return;
+
+  activeService = detail;
+  modalTitle.textContent = detail.title;
+  modalDescription.textContent = detail.description;
+  modalImage.src = detail.image;
+  modalImage.alt = detail.title;
+  populateList(modalChecks, detail.checks);
+  populateList(modalSymptoms, detail.symptoms);
+
+  serviceModal.classList.add("open");
+  serviceModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+  modalClose.focus();
+}
+
+function closeServiceModal(){
+  serviceModal.classList.remove("open");
+  serviceModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+}
+
+document.querySelectorAll(".learn-button").forEach(button => {
+  button.addEventListener("click", () => openServiceModal(button.dataset.service));
+});
+
+modalClose.addEventListener("click", closeServiceModal);
+modalCloseSecondary.addEventListener("click", closeServiceModal);
+
+serviceModal.addEventListener("click", event => {
+  if(event.target === serviceModal) closeServiceModal();
+});
+
+document.addEventListener("keydown", event => {
+  if(event.key === "Escape" && serviceModal.classList.contains("open")){
+    closeServiceModal();
+  }
+});
+
+bookServiceButton.addEventListener("click", () => {
+  if(activeService){
+    const serviceSelect = document.getElementById("service");
+    const matchingOption = Array.from(serviceSelect.options).find(
+      option => option.textContent.trim() === activeService.dropdown
+    );
+    if(matchingOption){
+      serviceSelect.value = matchingOption.value;
+    }
+  }
+
+  closeServiceModal();
+  document.getElementById("contact").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+
+  setTimeout(() => document.getElementById("name").focus(), 650);
+});
+
+
 document.getElementById("serviceForm").addEventListener("submit",function(e){
   e.preventDefault();
   const v=id=>encodeURIComponent(document.getElementById(id).value.trim());
@@ -502,5 +887,41 @@ const observer=new IntersectionObserver(entries=>{
 },{threshold:.12});
 document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 </script>
+
+<div class="modal-backdrop" id="serviceModal" aria-hidden="true">
+  <article class="service-modal" role="dialog" aria-modal="true" aria-labelledby="serviceModalTitle">
+    <button class="modal-close" type="button" id="modalClose" aria-label="Close service details">×</button>
+
+    <div class="modal-hero">
+      <img id="serviceModalImage" src="assets/check-engine.webp" alt="">
+      <div class="modal-title-wrap">
+        <small>Oakline Diagnostic Service</small>
+        <h3 id="serviceModalTitle">Service Details</h3>
+      </div>
+    </div>
+
+    <div class="modal-body">
+      <p id="serviceModalDescription"></p>
+
+      <div class="modal-columns">
+        <section class="modal-block">
+          <h4>What We Check</h4>
+          <ul id="serviceModalChecks"></ul>
+        </section>
+
+        <section class="modal-block">
+          <h4>Common Symptoms</h4>
+          <ul id="serviceModalSymptoms"></ul>
+        </section>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn primary" type="button" id="bookServiceButton">Book This Diagnostic</button>
+        <button class="btn" type="button" id="modalCloseSecondary" style="border-color:#cfd7d0;color:#202720;background:#fff">Close</button>
+      </div>
+    </div>
+  </article>
+</div>
+
 </body>
 </html>
