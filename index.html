@@ -285,7 +285,7 @@ footer ul{list-style:none;display:grid;gap:7px}
   font-size:.66rem;
   font-weight:900;
 }
-.request-status{display:none;margin-top:14px;padding:13px 15px;border-radius:9px;font-size:.86rem;font-weight:800}
+.slot-message{display:block;margin-top:6px;color:#607466;font-size:.72rem}.request-status{display:none;margin-top:14px;padding:13px 15px;border-radius:9px;font-size:.86rem;font-weight:800}
 .request-status.show{display:block}
 .request-status.success{background:#e9f8ed;color:#18552b;border:1px solid #9bd4a9}
 .request-status.error{background:#fff0f0;color:#7a1e1e;border:1px solid #e3aaaa}
@@ -652,8 +652,8 @@ body.modal-open{
       <div class="row"><label>Email<input id="email" type="email"></label><label>VIN (optional)<input id="vin" maxlength="17"></label></div>
       <div class="row"><label>Vehicle<input id="vehicle" required placeholder="Year / Make / Model"></label><label>Service Address<input id="location" placeholder="Street address, city and ZIP"></label></div>
       <div class="preferred-grid">
-        <label>Preferred Day<input id="preferredDay" type="date"></label>
-        <label>Preferred Time<select id="preferredTime"><option>No preference</option><option>Evening</option><option>Saturday</option><option>Sunday</option></select></label>
+        <label>Available Day<input id="preferredDay" type="date" required></label>
+        <label>Available Time<select id="preferredTime" required disabled><option value="">Choose a date first</option></select><small id="availabilityMessage" class="slot-message">Times are loaded live from OaklineOS.</small></label>
       </div>
       <label>Service<select id="service"><option>Complete diagnostic — starting at $89</option><option>Electrical diagnostic</option><option>No-start diagnostic</option><option>Transmission diagnostic</option><option>Module diagnostic</option><option>Battery and charging test</option></select></label>
       <label>Issue / Symptoms<textarea id="message" required placeholder="Describe warning lights, noises, symptoms and when the problem occurs."></textarea></label>
@@ -919,6 +919,25 @@ if(bookServiceButton) bookServiceButton.addEventListener("click", () => {
 
 
 const OAKLINE_BOOKING_ENDPOINT="https://oakline-booking-api.chriswarren1984.workers.dev/api/requests";
+const OAKLINE_AVAILABILITY_ENDPOINT="https://oakline-booking-api.chriswarren1984.workers.dev/api/availability";
+const preferredDayInput=document.getElementById("preferredDay");
+const preferredTimeSelect=document.getElementById("preferredTime");
+const availabilityMessage=document.getElementById("availabilityMessage");
+async function loadAvailableTimes(){
+  const date=preferredDayInput.value;
+  preferredTimeSelect.innerHTML='<option value="">Loading available times…</option>';
+  preferredTimeSelect.disabled=true;availabilityMessage.textContent='Checking live availability…';
+  if(!date){preferredTimeSelect.innerHTML='<option value="">Choose a date first</option>';availabilityMessage.textContent='Times are loaded live from OaklineOS.';return;}
+  try{
+    const response=await fetch(`${OAKLINE_AVAILABILITY_ENDPOINT}?date=${encodeURIComponent(date)}`);
+    const result=await response.json();
+    if(!response.ok||!result.ok)throw new Error(result.error||'Availability could not be loaded.');
+    if(!result.slots.length){preferredTimeSelect.innerHTML='<option value="">No appointments available</option>';availabilityMessage.textContent='Please choose another day.';return;}
+    preferredTimeSelect.innerHTML='<option value="">Select an available time</option>'+result.slots.map(slot=>`<option value="${slot.value}">${slot.label}</option>`).join('');
+    preferredTimeSelect.disabled=false;availabilityMessage.textContent=`${result.slots.length} appointment time(s) available.`;
+  }catch(error){preferredTimeSelect.innerHTML='<option value="">Unable to load times</option>';availabilityMessage.textContent=error.message||'Please call Oakline to schedule.';}
+}
+if(preferredDayInput){const tomorrow=new Date();tomorrow.setDate(tomorrow.getDate()+1);preferredDayInput.min=tomorrow.toISOString().slice(0,10);preferredDayInput.addEventListener('change',loadAvailableTimes);}
 const serviceForm=document.getElementById("serviceForm");
 
 if(serviceForm){
@@ -973,7 +992,7 @@ if(serviceForm){
         `${result.message || "Your request was sent successfully."}` +
         `<span class="request-reference">Request reference: ${result.requestId || "Received"}</span>`;
 
-      serviceForm.reset();
+      serviceForm.reset();preferredTimeSelect.innerHTML='<option value="">Choose a date first</option>';preferredTimeSelect.disabled=true;availabilityMessage.textContent='Times are loaded live from OaklineOS.';
       statusBox.scrollIntoView({behavior:"smooth", block:"center"});
     }catch(error){
       console.error("Oakline booking request failed:", error);
