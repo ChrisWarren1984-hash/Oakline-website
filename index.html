@@ -920,53 +920,74 @@ if(bookServiceButton) bookServiceButton.addEventListener("click", () => {
 
 const OAKLINE_BOOKING_ENDPOINT="https://oakline-booking-api.chriswarren1984.workers.dev/api/requests";
 const serviceForm=document.getElementById("serviceForm");
-if(serviceForm) serviceForm.addEventListener("submit",async function(e){
-  e.preventDefault();
-  const get=id=>document.getElementById(id).value.trim();
-  const request={
-    name:get("name"),phone:get("phone"),email:get("email"),vin:get("vin").toUpperCase(),
-    vehicle:get("vehicle"),location:get("location"),preferredDay:get("preferredDay"),
-    preferredTime:get("preferredTime"),service:get("service"),message:get("message"),
-    submittedAt:new Date().toISOString(),source:"oakline-website"
-  };
-  const button=document.getElementById("requestSubmit");
-  const statusBox=document.getElementById("requestStatus");
-  button.disabled=true;
-  button.textContent="Sending Request…";
-  statusBox.className="request-status show";
-  statusBox.textContent="Sending your appointment request securely…";
-  try{
-      const response=await fetch(OAKLINE_BOOKING_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(request)});
-      const result=await response.json();
-      if(!response.ok)throw new Error((result.errors||[result.error||"The request could not be sent."]).join(" "));
+
+if(serviceForm){
+  serviceForm.addEventListener("submit", async function(event){
+    event.preventDefault();
+
+    const getValue=id=>{
+      const element=document.getElementById(id);
+      return element ? element.value.trim() : "";
+    };
+
+    const request={
+      name:getValue("name"),
+      phone:getValue("phone"),
+      email:getValue("email"),
+      vin:getValue("vin").toUpperCase(),
+      vehicle:getValue("vehicle"),
+      location:getValue("location"),
+      preferredDay:getValue("preferredDay"),
+      preferredTime:getValue("preferredTime"),
+      service:getValue("service"),
+      message:getValue("message"),
+      website:""
+    };
+
+    const button=document.getElementById("requestSubmit");
+    const statusBox=document.getElementById("requestStatus");
+
+    button.disabled=true;
+    button.textContent="Sending Request…";
+    statusBox.className="request-status show";
+    statusBox.textContent="Sending your appointment request securely…";
+
+    try{
+      const response=await fetch(OAKLINE_BOOKING_ENDPOINT,{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(request)
+      });
+
+      const result=await response.json().catch(()=>({}));
+
+      if(!response.ok){
+        const messages=Array.isArray(result.errors)
+          ? result.errors
+          : [result.error || "The request could not be sent."];
+        throw new Error(messages.join(" "));
+      }
+
       statusBox.className="request-status show success";
-      statusBox.innerHTML=`${result.message||"Your request was sent successfully."}<span class="request-reference">Request reference: ${result.requestId||"Received"}</span>`;
-      document.getElementById("serviceForm").reset();
-      statusBox.scrollIntoView({behavior:"smooth",block:"center"});
-  }catch(error){
+      statusBox.innerHTML=
+        `${result.message || "Your request was sent successfully."}` +
+        `<span class="request-reference">Request reference: ${result.requestId || "Received"}</span>`;
+
+      serviceForm.reset();
+      statusBox.scrollIntoView({behavior:"smooth", block:"center"});
+    }catch(error){
+      console.error("Oakline booking request failed:", error);
       statusBox.className="request-status show error";
-      statusBox.textContent=error.message||"The online request could not be sent. Please call Oakline at (910) 489-7254.";
-  }finally{
+      statusBox.textContent=
+        error.message ||
+        "The online request could not be sent. Please call Oakline at (910) 489-7254.";
+    }finally{
       button.disabled=false;
       button.textContent="Send Appointment Request";
-  }
     }
-  }
-  const body=encodeURIComponent(`Oakline Service Request
+  });
+}
 
-Name: ${request.name}
-Phone: ${request.phone}
-Email: ${request.email}
-VIN: ${request.vin}
-Vehicle: ${request.vehicle}
-Location: ${request.location}
-Preferred Day: ${request.preferredDay}
-Preferred Time: ${request.preferredTime}
-Service: ${request.service}
-
-Issue: ${request.message}`);
-  window.location.href="sms:9104897254?body="+body;
-});
 if("IntersectionObserver" in window){
   const observer=new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
