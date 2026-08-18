@@ -30,7 +30,7 @@ footer{position:fixed;bottom:0;left:0;right:0;border-top:1px solid var(--line);b
 footer .inner{max-width:760px;margin:auto;display:flex;gap:8px}footer button{flex:1}
 </style></head><body>
 <div class="app">
-<header><div class="brand"><h1>Oakline Mobile</h1><small>Beta 1 · Appointments & Alerts</small></div><div class="status"><i class="dot"></i><span id="conn">Ready</span></div></header>
+<header><div class="brand"><h1>Oakline Mobile</h1><small>Beta 1.1 · Appointments & Alerts</small></div><div class="status"><i class="dot"></i><span id="conn">Ready</span></div></header>
 <div id="banner" class="banner hidden"></div>
 <section class="stats"><div class="stat"><b id="newCount">0</b><span>New Requests</span></div><div class="stat"><b id="upCount">0</b><span>Upcoming</span></div><div class="stat"><b id="todayCount">0</b><span>Today</span></div></section>
 <div class="tabs"><button class="active" data-view="requests">Requests</button><button data-view="upcoming">Upcoming</button><button data-view="activity">Activity</button><button data-view="diagnostics">Diagnostics</button></div>
@@ -66,12 +66,56 @@ function schedule(){clearInterval(S.timer);S.timer=setInterval(()=>loadRequests(
 function b64(s){const p='='.repeat((4-s.length%4)%4),b=(s+p).replace(/-/g,'+').replace(/_/g,'/'),raw=atob(b);return Uint8Array.from([...raw].map(c=>c.charCodeAt(0)))}
 async function enablePush(){try{if(!S.registration)throw new Error('Service worker is not ready.');if(!('PushManager'in window))throw new Error('Push is not supported.');const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;if(!standalone&&/iPhone|iPad|iPod/i.test(navigator.userAgent))throw new Error('Add Oakline Mobile to the Home Screen and open it from the icon first.');const p=await Notification.requestPermission();if(p!=='granted')throw new Error('Notification permission was not granted.');const k=await fetchJSON(api('/api/push/vapid-public-key'),{cache:'no-store'});let sub=await S.registration.pushManager.getSubscription();if(!sub)sub=await S.registration.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:b64(k.publicKey)});await fetchJSON(api('/api/push/subscribe'),{method:'POST',headers:headers(true),body:JSON.stringify({subscription:sub.toJSON(),deviceName:navigator.userAgent})});banner('Background push enabled.');await loadDiagnostics()}catch(e){banner(e.message,true)}}
 async function disablePush(){try{const sub=await S.registration?.pushManager.getSubscription();if(sub){await fetchJSON(api('/api/push/unsubscribe'),{method:'POST',headers:headers(true),body:JSON.stringify({endpoint:sub.endpoint})});await sub.unsubscribe()}banner('Push disabled.');await loadDiagnostics()}catch(e){banner(e.message,true)}}
-async function loadDiagnostics(){const rows=[['App','Beta 1'],['Home Screen',matchMedia('(display-mode: standalone)').matches||navigator.standalone===true?'Installed':'Browser mode'],['Notification permission',('Notification'in window)?Notification.permission:'Unsupported']];let sub=null;try{sub=await S.registration?.pushManager?.getSubscription()}catch{}rows.push(['Push subscription',sub?'Subscribed':'Not subscribed']);try{const d=await fetchJSON(api('/api/mobile/diagnostics'),{headers:headers(),cache:'no-store'});rows.push(['Booking API','Connected'],['Database',d.database||'Connected'],['Active push devices',String(d.activePushSubscriptions??0)],['VAPID',d.vapidConfigured?'Configured':'Missing'],['Server time',new Date(d.serverTime).toLocaleString()])}catch(e){rows.push(['Booking API',`Error: ${e.message}`])}$('#diagRows').innerHTML=rows.map(([a,b])=>`<div class="diag-row"><span>${esc(a)}</span><strong class="${/error|missing|unsupported|not subscribed/i.test(b)?'bad':'ok'}">${esc(b)}</strong></div>`).join('')}
+async function loadDiagnostics(){const rows=[['App','Beta 1.1'],['Home Screen',matchMedia('(display-mode: standalone)').matches||navigator.standalone===true?'Installed':'Browser mode'],['Notification permission',('Notification'in window)?Notification.permission:'Unsupported']];let sub=null;try{sub=await S.registration?.pushManager?.getSubscription()}catch{}rows.push(['Push subscription',sub?'Subscribed':'Not subscribed']);try{const d=await fetchJSON(api('/api/mobile/diagnostics'),{headers:headers(),cache:'no-store'});rows.push(['Booking API','Connected'],['Database',d.database||'Connected'],['Active push devices',String(d.activePushSubscriptions??0)],['VAPID',d.vapidConfigured?'Configured':'Missing'],['Server time',new Date(d.serverTime).toLocaleString()])}catch(e){rows.push(['Booking API',`Error: ${e.message}`])}$('#diagRows').innerHTML=rows.map(([a,b])=>`<div class="diag-row"><span>${esc(a)}</span><strong class="${/error|missing|unsupported|not subscribed/i.test(b)?'bad':'ok'}">${esc(b)}</strong></div>`).join('')}
 async function sendTestPush(){try{const d=await fetchJSON(api('/api/push/test'),{method:'POST',headers:headers(true),body:'{}'});banner(`Test push sent to ${d.sent||0} device(s).`)}catch(e){banner(e.message,true)}}
 async function openRequest(id){if(!id)return;showHome();S.filter='All';$$('.filters button').forEach(b=>b.classList.toggle('active',b.dataset.filter==='All'));render();setTimeout(()=>document.querySelector(`#request-${CSS.escape(id)}`)?.scrollIntoView({behavior:'smooth',block:'center'}),150)}
 $$('.filters button').forEach(b=>b.onclick=()=>{S.filter=b.dataset.filter;$$('.filters button').forEach(x=>x.classList.toggle('active',x===b));render()});$$('.tabs button').forEach(b=>b.onclick=()=>showView(b.dataset.view));
 $('#refreshActivity').onclick=loadActivity;$('#testApi').onclick=()=>loadRequests(true);$('#testPush').onclick=sendTestPush;$('#refreshDiag').onclick=loadDiagnostics;$('#enablePush').onclick=enablePush;$('#disablePush').onclick=disablePush;$('#refreshBtn').onclick=()=>loadRequests(true);$('#settingsBtn').onclick=showSettings;$('#homeBtn').onclick=showHome;
-$('#saveSettings').onclick=async()=>{localStorage.oaklineEndpoint=$('#endpoint').value.trim();localStorage.oaklineApiKey=$('#apiKey').value.trim();localStorage.oaklineInterval=$('#interval').value;schedule();showHome();await loadRequests(true)};
+async function saveMobileSettings(event){
+  if(event){event.preventDefault();event.stopPropagation();}
+  const button=document.querySelector('#saveSettings');
+  const endpoint=document.querySelector('#endpoint')?.value.trim()||'';
+  const key=document.querySelector('#apiKey')?.value.trim()||'';
+  const interval=document.querySelector('#interval')?.value||'30';
+  if(!endpoint){banner('Enter the Booking Requests endpoint.',true);document.querySelector('#endpoint')?.focus();return;}
+  if(!/^https:\/\//i.test(endpoint)){banner('Booking Requests endpoint must begin with https://',true);return;}
+  if(!key){banner('Enter the Private API key.',true);document.querySelector('#apiKey')?.focus();return;}
+  const original=button?.textContent||'Save & Connect';
+  if(button){button.disabled=true;button.textContent='Connecting…';}
+  try{
+    // Verify the entered values BEFORE saving them. This gives a visible result
+    // on iOS instead of silently returning to the dashboard when credentials fail.
+    const normalizedEndpoint=endpoint.replace(/\/+$/,'');
+    const res=await fetch(normalizedEndpoint,{headers:{Accept:'application/json',Authorization:`Bearer ${key}`},cache:'no-store'});
+    const data=await res.json().catch(()=>({}));
+    if(!res.ok||data.ok===false)throw new Error(data.error||`Booking service returned ${res.status}`);
+    try{
+      localStorage.setItem('oaklineEndpoint',normalizedEndpoint);
+      localStorage.setItem('oaklineApiKey',key);
+      localStorage.setItem('oaklineInterval',String(interval));
+    }catch(storageError){
+      throw new Error(`iPhone could not save the connection settings: ${storageError.message||storageError}`);
+    }
+    S.requests=Array.isArray(data.requests)?data.requests:[];
+    schedule();showHome();render();
+    $('#conn').textContent='Live';
+    $('#lastSync').textContent=`Updated ${new Date().toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})}`;
+    banner(`Connected — ${S.requests.length} request${S.requests.length===1?'':'s'} available.`);
+  }catch(error){
+    banner(`Connection failed: ${error.message||error}`,true);
+  }finally{
+    if(button){button.disabled=false;button.textContent=original;}
+  }
+}
+const saveSettingsButton=document.querySelector('#saveSettings');
+if(saveSettingsButton){
+  saveSettingsButton.addEventListener('click',saveMobileSettings,{passive:false});
+  // iOS Home Screen fallback for cases where a tap does not emit click reliably.
+  saveSettingsButton.addEventListener('touchend',event=>{
+    if(event.cancelable)event.preventDefault();
+    saveMobileSettings(event);
+  },{passive:false});
+}
 navigator.serviceWorker?.addEventListener('message',e=>{if(e.data?.type==='OPEN_REQUEST')openRequest(e.data.requestId)});
 (async()=>{if('serviceWorker'in navigator){S.registration=await navigator.serviceWorker.register('./sw.js');await navigator.serviceWorker.ready}schedule();await loadRequests();const id=new URL(location.href).searchParams.get('request');if(id)openRequest(id)})();
 </script></body></html>
